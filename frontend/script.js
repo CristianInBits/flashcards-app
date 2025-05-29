@@ -7,7 +7,7 @@ const answerEl = document.getElementById("answer");
 const selector = document.getElementById("themeSelector");
 
 async function loadFlashcards() {
-    const res = await fetch("flashcards.json");
+    const res = await fetch("http://localhost:8080/api/test");
     flashcards = await res.json();
     showCard();
 }
@@ -38,6 +38,6 @@ selector.addEventListener("change", (e) => {
     document.body.classList.add(e.target.value);
 });
 
-document.body.classList.add("theme-4");
+document.body.classList.add("theme-2");
 
 loadFlashcards();
