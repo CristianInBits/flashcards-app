@@ -1,6 +1,7 @@
 let flashcards = [];
 let currentIndex = 0;
 const flashcard = document.getElementById("flashcard");
+const cardInner = flashcard.querySelector(".card-inner");
 const questionEl = document.getElementById("question");
 const answerEl = document.getElementById("answer");
 

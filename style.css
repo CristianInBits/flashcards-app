@@ -1,66 +1,96 @@
 body {
     font-family: sans-serif;
+    background: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #f2f2f2;
     margin: 0;
 }
 
 .container {
-    text-align: center;
-}
-
-.card {
-    width: 300px;
-    height: 200px;
-    perspective: 1000px;
-    margin-bottom: 20px;
-    cursor: pointer;
-}
-
-.card>div {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    font-size: 1.2rem;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    width: 300px;
+    /* MISMO ANCHO QUE .card */
+    margin: 0 auto;
 }
 
-.front {
-    background-color: #ffffff;
-}
 
-.back {
-    background-color: #fffbcc;
-    transform: rotateY(180deg);
-}
-
-.card.flipped .front {
-    transform: rotateY(180deg);
-}
-
-.card.flipped .back {
-    transform: rotateY(360deg);
-}
 
 .card {
     position: relative;
-    transition: transform 0.6s;
+    width: 300px;
+    height: 200px;
+    perspective: 1000px;
+    margin: 0 auto 30px auto;
+    /* Añade margen debajo */
+}
+
+
+.card-inner {
+    width: 100%;
+    height: 100%;
     transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+    position: relative;
+}
+
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.front,
+.back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+
+
+.front {
+    background: #ffffff;
+}
+
+.back {
+    background: #fffbcc;
+    transform: rotateY(180deg);
+}
+
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    /* Reparte el espacio horizontal */
+    width: 100%;
+    /* Mismo ancho que la tarjeta */
+    gap: 1rem;
 }
 
 .controls button {
-    margin: 0 10px;
-    padding: 10px 15px;
+    flex: 1;
+    padding: 0.7rem 1.2rem;
     font-size: 1rem;
-    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s;
+}
+
+.controls button:hover {
+    background-color: #0056b3;
 }
