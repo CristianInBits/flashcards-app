@@ -1,6 +1,44 @@
+:root {
+    --bg: #f0f4ff;
+    --front: #ffffff;
+    --back: #dbeafe;
+    --button: #60a5fa;
+    --button-hover: #3b82f6;
+    --text: #1f2937;
+}
+
+.theme-1 {
+    --bg: #fdf6f9;
+    --front: #ffffff;
+    --back: #ffe3e9;
+    --button: #f28baf;
+    --button-hover: #e5739f;
+    --text: #333333;
+}
+
+.theme-2 {
+    --bg: #e0f7fa;
+    --front: #ffffff;
+    --back: #b2ebf2;
+    --button: #4dd0e1;
+    --button-hover: #26c6da;
+    --text: #004d40;
+}
+
+.theme-3 {
+    --bg: #1e1e2f;
+    --front: #2c2c3c;
+    --back: #3a3a4a;
+    --button: #8ab4f8;
+    --button-hover: #669df6;
+    --text: #f1f1f1;
+}
+
+
 body {
     font-family: sans-serif;
-    background: #ffffff;
+    background: var(--bg);
+    color: var(--text);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,11 +99,11 @@ body {
 
 
 .front {
-    background: #ffffff;
+    background: var(--front);
 }
 
 .back {
-    background: #fffbcc;
+    background: var(--back);
     transform: rotateY(180deg);
 }
 
@@ -85,12 +123,25 @@ body {
     font-size: 1rem;
     border: none;
     border-radius: 8px;
-    background-color: #007bff;
+    background-color: var(--button);
     color: white;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     transition: background-color 0.3s;
 }
 
 .controls button:hover {
-    background-color: #0056b3;
+    background-color: var(--button-hover);
+}
+
+#themeSelector {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
