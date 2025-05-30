@@ -50,10 +50,16 @@ public class FlashcardController {
                 .orElseThrow(NoSuchElementException::new);
     }
 
+    @PostMapping("/{id}/progress")
+    public Flashcard updateProgress(
+            @PathVariable Long id,
+            @RequestParam boolean remembered) {
+        return service.updateLearningProgress(id, remembered);
+    }
+
     @DeleteMapping("/{id}")
     public Flashcard delete(@PathVariable Long id) {
         return service.delete(id)
                 .orElseThrow(NoSuchElementException::new);
     }
-
 }

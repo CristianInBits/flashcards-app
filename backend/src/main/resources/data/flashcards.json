@@ -14,5 +14,12 @@
     {
         "question": "¿Qué se considera en la 1ª Abstracción de la Programación Concurrente?",
         "answer": "Se considera que cada proceso se ejecuta en su propio procesador."
+    },
+    {
+        "question": "¿Qué es una promesa en JS?",
+        "answer": "Un objeto que representa una operación asíncrona",
+        "topic": "JavaScript",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
     }
 ]

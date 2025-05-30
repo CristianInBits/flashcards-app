@@ -52,6 +52,28 @@ async function setStatus(status) {
     }
 }
 
+async function updateProgress(remembered) {
+    const currentCard = flashcards[currentIndex];
+    try {
+        const res = await fetch(`http://localhost:8080/api/flashcards/${currentCard.id}/progress?remembered=${remembered}`, {
+            method: "POST"
+        });
+
+        if (!res.ok) {
+            throw new Error("Error actualizando el progreso");
+        }
+
+        const updatedCard = await res.json();
+        flashcards[currentIndex] = updatedCard;
+        showCard(); // Actualiza la vista
+        alert(`🔁 Nivel actualizado: ${updatedCard.level}`);
+    } catch (err) {
+        console.error(err);
+        alert("⚠️ No se pudo actualizar el progreso");
+    }
+}
+
+
 
 function showCard() {
     const card = flashcards[currentIndex];
@@ -60,8 +82,8 @@ function showCard() {
     document.getElementById("flashcard").classList.remove("flipped");
 
     const badge = document.getElementById("statusBadge");
-    badge.textContent = card.status;
-    badge.className = "badge " + card.status;
+    badge.textContent = `Nivel: ${card.level} | Revisión: ${card.nextReviewDate}`;
+    badge.className = "badge";
 }
 
 

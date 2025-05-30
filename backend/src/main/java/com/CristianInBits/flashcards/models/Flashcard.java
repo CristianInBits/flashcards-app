@@ -1,5 +1,9 @@
 package com.CristianInBits.flashcards.models;
 
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +20,10 @@ public class Flashcard {
     private String question;
     private String answer;
     private String topic;
+    private int level;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    private LocalDate nextReviewDate;
 
     @Enumerated
     private LearningStatus status;
@@ -69,5 +77,21 @@ public class Flashcard {
 
     public void setTopic(String topic) {
         this.topic = topic;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public LocalDate getNextReviewDate() {
+        return nextReviewDate;
+    }
+
+    public void setNextReviewDate(LocalDate nextReviewDate) {
+        this.nextReviewDate = nextReviewDate;
     }
 }
