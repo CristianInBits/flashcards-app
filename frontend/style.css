@@ -145,3 +145,56 @@ body {
     z-index: 1000;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
+
+.status-controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.status-controls button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.status-controls button:nth-child(1) {
+    background-color: #ffcccc;
+}
+
+.status-controls button:nth-child(2) {
+    background-color: #fff2b8;
+}
+
+.status-controls button:nth-child(3) {
+    background-color: #ccffcc;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 12px;
+    color: rgb(0, 0, 0);
+    z-index: 10;
+}
+
+.badge.NO_CONOCIDA {
+    background-color: #ff4d4d;
+}
+
+.badge.MEDIO {
+    background-color: #ffcc00;
+    color: black;
+}
+
+.badge.APRENDIDA {
+    background-color: #28a745;
+}

@@ -31,11 +31,37 @@ async function updateFlashcardStatus(id, status) {
     });
 }
 
+async function setStatus(status) {
+    const currentCard = flashcards[currentIndex];
+    try {
+        const res = await fetch(`http://localhost:8080/api/flashcards/${currentCard.id}/status?status=${status}`, {
+            method: "POST"
+        });
+
+        if (!res.ok) {
+            throw new Error("Error actualizando el estado");
+        }
+
+        const updatedCard = await res.json();
+        flashcards[currentIndex] = updatedCard;
+        showCard();
+        alert(`📌 Estado actualizado a: ${status}`);
+    } catch (err) {
+        console.error(err);
+        alert("⚠️ No se pudo actualizar el estado");
+    }
+}
+
+
 function showCard() {
     const card = flashcards[currentIndex];
     document.getElementById("question").textContent = card.question;
     document.getElementById("answer").textContent = card.answer;
     document.getElementById("flashcard").classList.remove("flipped");
+
+    const badge = document.getElementById("statusBadge");
+    badge.textContent = card.status;
+    badge.className = "badge " + card.status;
 }
 
 
@@ -63,3 +89,4 @@ document.body.classList.add("theme-2");
 loadFlashcards();
 
 console.log("Tarjetas cargadas:", flashcards);
+
