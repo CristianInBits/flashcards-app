@@ -10,5 +10,9 @@
     {
         "question": "¿Quién escribió 'Cien años de soledad'?",
         "answer": "Gabriel García Márquez"
+    },
+    {
+        "question": "¿Qué se considera en la 1ª Abstracción de la Programación Concurrente?",
+        "answer": "Se considera que cada proceso se ejecuta en su propio procesador."
     }
 ]
