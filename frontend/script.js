@@ -7,9 +7,22 @@ const answerEl = document.getElementById("answer");
 const selector = document.getElementById("themeSelector");
 
 async function loadFlashcards() {
-    const res = await fetch("http://localhost:8080/api/flashcards");
-    flashcards = await res.json();
-    showCard();
+    try {
+        const res = await fetch("http://localhost:8080/api/flashcards/");
+        flashcards = await res.json();
+
+        if (flashcards.length === 0) {
+            document.getElementById("question").textContent = "No hay tarjetas disponibles.";
+            document.getElementById("answer").textContent = "-";
+        } else {
+            showCard();
+        }
+
+    } catch (error) {
+        console.error("Error cargando las tarjetas:", error);
+        document.getElementById("question").textContent = "Error al cargar.";
+        document.getElementById("answer").textContent = "-";
+    }
 }
 
 async function updateFlashcardStatus(id, status) {
@@ -20,10 +33,11 @@ async function updateFlashcardStatus(id, status) {
 
 function showCard() {
     const card = flashcards[currentIndex];
-    questionEl.textContent = card.question;
-    answerEl.textContent = card.answer;
-    flashcard.classList.remove("flipped");
+    document.getElementById("question").textContent = card.question;
+    document.getElementById("answer").textContent = card.answer;
+    document.getElementById("flashcard").classList.remove("flipped");
 }
+
 
 function nextCard() {
     currentIndex = (currentIndex + 1) % flashcards.length;
@@ -47,3 +61,5 @@ selector.addEventListener("change", (e) => {
 document.body.classList.add("theme-2");
 
 loadFlashcards();
+
+console.log("Tarjetas cargadas:", flashcards);
