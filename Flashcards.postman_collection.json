@@ -1,0 +1,228 @@
+{
+    "info": {
+        "name": "Flashcards API",
+        "_postman_id": "1f5f946e-bfdc-4a45-91b7-abc123456789",
+        "description": "Colección para probar endpoints de la API de Flashcards",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "GET todas las flashcards",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8080/api/flashcards/",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "flashcards",
+                        ""
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GET flashcard por id",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8080/api/flashcards/1",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "flashcards",
+                        "1"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GET flashcard por id (404)",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8080/api/flashcards/11111",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "flashcards",
+                        "1"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GET por topic",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8080/api/flashcards/?topic=Java",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "flashcards",
+                        ""
+                    ],
+                    "query": [
+                        {
+                            "key": "topic",
+                            "value": "Geografía"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GET por status",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8080/api/flashcards/?status=MEDIO",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "flashcards",
+                        ""
+                    ],
+                    "query": [
+                        {
+                            "key": "status",
+                            "value": "MEDIO"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GET por topic + status",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8080/api/flashcards/?topic=Java&status=NO_CONOCIDA",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "flashcards",
+                        ""
+                    ],
+                    "query": [
+                        {
+                            "key": "topic",
+                            "value": "JavaScript"
+                        },
+                        {
+                            "key": "status",
+                            "value": "NO_CONOCIDA"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "POST nueva flashcard",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"question\": \"¿Qué es Spring Boot?\",\n  \"answer\": \"Un framework para crear aplicaciones Java fácilmente\",\n  \"topic\": \"Java\",\n  \"status\": \"NO_CONOCIDA\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/flashcards/",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "flashcards",
+                        ""
+                    ]
+                }
+            }
+        },
+        {
+            "name": "POST actualizar status",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8080/api/flashcards/1/status?status=APRENDIDA",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "flashcards",
+                        "1",
+                        "status"
+                    ],
+                    "query": [
+                        {
+                            "key": "status",
+                            "value": "APRENDIDA"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "DELETE flashcard por id",
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8080/api/flashcards/1",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "flashcards",
+                        "1"
+                    ]
+                }
+            }
+        }
+    ]
+}

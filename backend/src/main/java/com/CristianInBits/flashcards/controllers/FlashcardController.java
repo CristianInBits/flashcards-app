@@ -6,6 +6,7 @@ import com.CristianInBits.flashcards.services.FlashcardService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/flashcards")
@@ -18,18 +19,27 @@ public class FlashcardController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public List<Flashcard> getAll(
             @RequestParam(required = false) String topic,
             @RequestParam(required = false) LearningStatus status) {
-        if (topic != null)
+        if (topic != null && status != null) {
+            return service.getByTopicAndStatus(topic, status);
+        } else if (topic != null) {
             return service.getByTopic(topic);
-        if (status != null)
+        } else if (status != null) {
             return service.getByStatus(status);
-        return service.getAll();
+        } else {
+            return service.getAll();
+        }
     }
 
-    @PostMapping
+    @GetMapping("/{id}")
+    public Flashcard getById(@PathVariable Long id) {
+        return service.getById(id);
+    }
+
+    @PostMapping("/")
     public Flashcard create(@RequestBody Flashcard flashcard) {
         return service.save(flashcard);
     }
@@ -37,6 +47,13 @@ public class FlashcardController {
     @PostMapping("/{id}/status")
     public Flashcard updateStatus(@PathVariable Long id, @RequestParam LearningStatus status) {
         return service.updateStatus(id, status)
-                .orElseThrow(() -> new RuntimeException("Flashcard no encontrada"));
+                .orElseThrow(NoSuchElementException::new);
     }
+
+    @DeleteMapping("/{id}")
+    public Flashcard delete(@PathVariable Long id) {
+        return service.delete(id)
+                .orElseThrow(NoSuchElementException::new);
+    }
+
 }

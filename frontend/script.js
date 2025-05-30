@@ -7,9 +7,15 @@ const answerEl = document.getElementById("answer");
 const selector = document.getElementById("themeSelector");
 
 async function loadFlashcards() {
-    const res = await fetch("http://localhost:8080/api/test");
+    const res = await fetch("http://localhost:8080/api/flashcards");
     flashcards = await res.json();
     showCard();
+}
+
+async function updateFlashcardStatus(id, status) {
+    await fetch(`http://localhost:8080/api/flashcards/${id}/status?status=${status}`, {
+        method: 'POST'
+    });
 }
 
 function showCard() {

@@ -12,4 +12,7 @@ public interface FlashcardRepository extends JpaRepository<Flashcard, Long> {
     List<Flashcard> findByTopic(String topic);
 
     List<Flashcard> findByStatus(LearningStatus status);
+
+    List<Flashcard> findByTopicAndStatus(String topic, LearningStatus status);
+
 }

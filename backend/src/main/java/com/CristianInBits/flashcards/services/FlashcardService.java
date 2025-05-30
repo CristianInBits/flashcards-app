@@ -6,6 +6,7 @@ import com.CristianInBits.flashcards.repository.FlashcardRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -15,6 +16,11 @@ public class FlashcardService {
 
     public FlashcardService(FlashcardRepository repository) {
         this.repository = repository;
+    }
+
+    public Flashcard getById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Flashcard con id " + id + " no encontrada"));
     }
 
     public List<Flashcard> getAll() {
@@ -29,6 +35,10 @@ public class FlashcardService {
         return repository.findByStatus(status);
     }
 
+    public List<Flashcard> getByTopicAndStatus(String topic, LearningStatus status) {
+        return repository.findByTopicAndStatus(topic, status);
+    }
+
     public Flashcard save(Flashcard flashcard) {
         return repository.save(flashcard);
     }
@@ -39,4 +49,12 @@ public class FlashcardService {
             return repository.save(card);
         });
     }
+
+    public Optional<Flashcard> delete(Long id) {
+        return repository.findById(id).map(card -> {
+            repository.deleteById(id);
+            return card;
+        });
+    }
+
 }

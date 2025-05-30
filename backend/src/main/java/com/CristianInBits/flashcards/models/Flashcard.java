@@ -20,6 +20,17 @@ public class Flashcard {
     @Enumerated
     private LearningStatus status;
 
+    public Flashcard() {
+    }
+
+    public Flashcard(Long id, String question, String answer, String topic, LearningStatus status) {
+        this.id = id;
+        this.question = question;
+        this.answer = answer;
+        this.topic = topic;
+        this.status = status;
+    }
+
     public String getAnswer() {
         return answer;
     }
