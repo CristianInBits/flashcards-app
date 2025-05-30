@@ -1,105 +1,91 @@
 # 🧠 Flashcards App
 
-Aplicación web interactiva de tarjetas de estudio (flashcards) construida con HTML, CSS, JavaScript y Spring Boot como backend.
+Aplicación web interactiva de tarjetas de estudio (flashcards) construida con HTML, CSS y JavaScript en el frontend, y una API REST en Java Spring Boot en el backend.
 
-Permite practicar preguntas y respuestas de forma visual e intuitiva mediante una animación de giro. Ideal para repasar conocimientos o preparar exámenes.
+Permite practicar preguntas y respuestas de forma visual e intuitiva mediante una animación de giro y aplicar técnicas de aprendizaje espaciado.
 
 ---
 
 ## ✨ Características
 
-### Frontend
-
 * Tarjetas interactivas con animación de volteo (flip).
 * Pregunta por un lado, respuesta por el otro.
 * Navegación entre tarjetas (anterior / siguiente).
-* Selector de tema visual con cambio de paleta (modo claro/oscuro).
-* Conexión a backend REST para cargar y guardar tarjetas.
-
-### Backend
-
-* API REST construida con Spring Boot.
-* Tarjetas con atributos: `question`, `answer`, `topic`, `status` (3 niveles de aprendizaje).
-* Endpoints para CRUD básico, filtro por tema y estado.
-* Manejo de errores con `@ControllerAdvice` y respuestas personalizadas.
-* Carga de datos iniciales con `@PostConstruct`.
+* Clasificación por temas y niveles de aprendizaje.
+* Aprendizaje espaciado con sistema de revisión progresiva.
+* Actualización del estado mediante botones "✅ Recordé" y "❌ Fallé".
+* Persistencia completa en base de datos.
 
 ---
 
 ## 📁 Estructura del proyecto
 
-```
+```tree
 flashcards-app/
-├── backend/               # Proyecto Spring Boot
-│   ├── src/
-│   ├── pom.xml
-│   └── ...
-├── frontend/              # Interfaz HTML, CSS y JS
-│   ├── index.html
-│   ├── script.js
-│   └── style.css
-├── .gitignore
-└── README.md
+├── frontend/
+│   ├── index.html        # Página principal
+│   ├── style.css         # Estilos y animación
+│   ├── script.js         # Lógica del cliente
+│   └── flashcards.json   # Datos iniciales para carga
+│
+├── backend/
+│   ├── src/main/java/... # Código fuente Java Spring Boot
+│   ├── src/main/resources/data/flashcards.json  # Datos de carga inicial
+│   └── application.properties  # Configuración de la BD y app
+└── data/flashcards-db.mv.db  # Base de datos persistente (H2)
 ```
 
 ---
 
 ## 🚀 Cómo usarlo
 
-### 1. Clonar el repositorio
+1. Clona el repositorio:
 
-```bash
-git clone https://github.com/tu_usuario/flashcards-app.git
-cd flashcards-app
-```
+    ```bash
+    git clone https://github.com/tu_usuario/flashcards-app.git
+    ```
 
-### 2. Ejecutar el backend (Spring Boot)
+2. Abre el proyecto en VSCode.
+3. Ejecuta el backend (`Spring Boot`) para activar la API REST:
 
-```bash
-cd backend
-./mvnw spring-boot:run
-```
+   * Usa `./mvnw spring-boot:run` o desde tu IDE.
+4. Abre el `index.html` con Live Server (recomendado).
+5. Interactúa con las tarjetas:
 
-La API estará disponible en `http://localhost:8080/api/flashcards/`
-
-### 3. Ejecutar el frontend
-
-* Abre `frontend/index.html` con Live Server o directamente desde el navegador
-* Las tarjetas se cargarán automáticamente desde el backend
+   * Clic para girar y ver la respuesta.
+   * Usa los botones para registrar si recordaste o fallaste.
 
 ---
 
-## 💡 Endpoints disponibles
+## 📌 Tecnologías utilizadas
 
-* `GET /api/flashcards/` → Obtener todas las tarjetas
-* `GET /api/flashcards/{id}` → Obtener tarjeta por ID (404 si no existe)
-* `GET /api/flashcards?topic=XYZ` → Filtrar por tema
-* `GET /api/flashcards?status=APRENDIDA` → Filtrar por nivel de aprendizaje
-* `GET /api/flashcards?topic=XYZ&status=MEDIO` → Filtro combinado
-* `POST /api/flashcards/` → Crear nueva tarjeta
-* `POST /api/flashcards/{id}/status?status=MEDIO` → Actualizar estado
-* `DELETE /api/flashcards/{id}` → Eliminar tarjeta
+* Frontend: HTML5 + CSS3 (con transformaciones 3D) + JavaScript
+* Backend: Spring Boot + Maven + H2 (modo archivo persistente)
+* JSON: para datos iniciales
 
 ---
 
-## 📅 Tecnologías utilizadas
+## 🔁 Aprendizaje espaciado
 
-* Frontend: HTML5, CSS3, JavaScript (vanilla)
-* Backend: Java 17, Spring Boot, Maven
-* Base de datos: H2 en memoria
-* Herramientas: Postman, Live Server (VSCode)
+Cada tarjeta tiene un `nivel de memorización (0–4)` y una `fecha de próxima revisión`. Al pulsar:
 
----
+* `✅ Recordé` → Aumenta el nivel y programa la próxima revisión según el nuevo nivel
+* `❌ Fallé` → Reinicia el nivel a 0 y agenda revisión inmediata
 
-## 🔖 Próximas mejoras
+| Nivel | Intervalo | Ejemplo próximo repaso |
+| ----- | --------- | ---------------------- |
+| 0     | inmediato | hoy                    |
+| 1     | +1 día    | mañana                 |
+| 2     | +3 días   | en 3 días              |
+| 3     | +7 días   | en 1 semana            |
+| 4     | +30 días  | en 1 mes               |
 
-* Panel de administración para crear/editar tarjetas desde el frontend
-* Aprendizaje espaciado automatizado
-* Exportar tarjetas (JSON, CSV)
-* Registro de usuario y tarjetas personalizadas
+La información se guarda en base de datos y se conserva entre sesiones ✅
 
 ---
 
 ## 📄 Licencia
 
-Este proyecto es de uso libre para fines educativos y perso
+Este proyecto es de uso libre para fines educativos y personales.
+
+---
