@@ -1,5 +1,6 @@
 package com.CristianInBits.flashcards.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,5 +15,11 @@ public interface FlashcardRepository extends JpaRepository<Flashcard, Long> {
     List<Flashcard> findByStatus(LearningStatus status);
 
     List<Flashcard> findByTopicAndStatus(String topic, LearningStatus status);
+
+    List<Flashcard> findByCollection(String collection);
+
+    List<Flashcard> findByCollectionAndTopic(String collection, String topic);
+
+    List<Flashcard> findByCollectionAndNextReviewDateLessThanEqual(String collection, LocalDate date);
 
 }

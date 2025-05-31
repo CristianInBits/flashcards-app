@@ -16,6 +16,16 @@
     </select>
 
     <div class="container">
+
+        <div class="collection-selector">
+            <label for="collectionSelect">📚 Colección:</label>
+            <select id="collectionSelect" onchange="changeCollection()">
+                <option value="bases-datos">Bases de Datos</option>
+                <option value="programacion-concurrente">Programación Concurrente</option>
+                <!-- Puedes agregar más aquí -->
+            </select>
+        </div>
+
         <div class="card" id="flashcard">
             <div class="card-inner">
                 <div class="front" id="question">Cargando...</div>
@@ -33,7 +43,6 @@
             <button onclick="updateProgress(false)">❌ Fallé</button>
             <button onclick="updateProgress(true)">✅ Recordé</button>
         </div>
-
 
     </div>
 

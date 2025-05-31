@@ -1,5 +1,6 @@
 let flashcards = [];
 let currentIndex = 0;
+let currentCollection = "bases-datos";
 const flashcard = document.getElementById("flashcard");
 const cardInner = flashcard.querySelector(".card-inner");
 const questionEl = document.getElementById("question");
@@ -73,6 +74,24 @@ async function updateProgress(remembered) {
     }
 }
 
+async function changeCollection() {
+    const select = document.getElementById("collectionSelect");
+    currentCollection = select.value;
+    await loadFlashcardsByCollection(currentCollection);
+    currentIndex = 0;
+    showCard();
+}
+
+async function loadFlashcardsByCollection(collection) {
+    try {
+        const res = await fetch(`http://localhost:8080/api/flashcards/byCollection?collection=${collection}`);
+        if (!res.ok) throw new Error("Error al cargar la colección");
+        flashcards = await res.json();
+    } catch (err) {
+        console.error(err);
+        alert("⚠️ No se pudieron cargar las tarjetas");
+    }
+}
 
 
 function showCard() {

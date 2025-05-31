@@ -1,0 +1,378 @@
+[
+    {
+        "question": "¿Cuál es la estructura básica del modelo relacional?",
+        "answer": "El concepto de RELACIÓN (tabla).",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué representa un atributo?",
+        "answer": "Es una propiedad de la relación, se representa como una columna.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué es una tupla?",
+        "answer": "Una fila de la tabla, es una ocurrencia de la relación.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué es el dominio de un atributo?",
+        "answer": "El conjunto válido de valores que puede tomar.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué es una relación en el modelo relacional?",
+        "answer": "Es la estructura básica, representada mediante una tabla.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué es el grado de una relación?",
+        "answer": "El número de atributos (columnas).",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué es la cardinalidad de una relación?",
+        "answer": "El número de tuplas (filas).",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué características definen una relación?",
+        "answer": "No hay duplicados, el orden de filas y columnas no importa, y cada celda contiene un único valor.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué es una vista?",
+        "answer": "Una tabla virtual definida sobre una o más tablas reales; solo se almacena su definición.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué distingue una vista materializada de una vista normal?",
+        "answer": "La vista materializada almacena también los datos; la normal solo su definición.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué es una relación sin nombre?",
+        "answer": "Resultado temporal de una consulta (final o intermedia).",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué es una clave candidata?",
+        "answer": "Un conjunto no vacío de atributos que identifica unívoca y mínimamente cada tupla.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué es una clave primaria?",
+        "answer": "Es la clave candidata elegida por el usuario para identificar las tuplas de la relación.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": " ¿Qué es una clave alternativa?",
+        "answer": "Una clave candidata que no se eligió como clave primaria.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué es una clave ajena?",
+        "answer": "Atributo(s) de una relación que deben coincidir con la clave primaria de otra relación.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Cómo se representa una clave ajena en un grafo relacional?",
+        "answer": "Con cursiva o subrayado discontinuo.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué indica el símbolo * en un grafo relacional?",
+        "answer": "Que el atributo puede contener valores nulos.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Cómo se representa una clave primaria en un grafo relacional?",
+        "answer": "Mediante subrayado.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Cómo se representa una clave alternativa en un grafo relacional?",
+        "answer": "En negrita (indicada como UNIQUE).",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Cómo se representa un atributo que no admite valores nulos?",
+        "answer": "Con la anotación NOT NULL (NN).",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué significan las letras R, C, N y D en un grafo relacional?",
+        "answer": "Opciones de borrado/modificación: R: restringido; C: en cascada; N: puesta a nulos; D: puesta a valor por defecto",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué garantiza la regla de integridad de entidad?",
+        "answer": "Que ningún atributo de la clave primaria puede tener valor nulo.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué garantiza la regla de integridad referencial?",
+        "answer": "Que los valores de la clave ajena deben coincidir con los de la clave primaria referenciada o ser nulos.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué indica una restricción NOT NULL?",
+        "answer": "Que un atributo no puede contener valores nulos.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué hace una restricción CHECK?",
+        "answer": "Verifica una condición lógica sobre un elemento y, si no se cumple, rechaza la operación.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿En qué se diferencia una ASSERTION de un CHECK?",
+        "answer": "La ASSERTION puede afectar a varios elementos y siempre debe tener nombre.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué es un TRIGGER (disparador)?",
+        "answer": "Una regla procedimental que ejecuta una acción cuando se cumple una condición.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué efecto tiene la opción `CASCADE` al modificar o borrar una clave primaria?",
+        "answer": "Propaga la operación a la tabla que contiene la clave ajena.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué significa la opción `SET NULL` en una clave ajena?",
+        "answer": "Sustituye el valor por nulo en la clave ajena si se modifica o borra la clave primaria referenciada.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué ocurre con `NO ACTION` en una clave ajena?",
+        "answer": "Se rechaza la operación de borrado o actualización si viola la integridad referencial.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué garantiza una restricción UNIQUE?",
+        "answer": "Que los valores de uno o más atributos no se repiten en ninguna tupla, permitiendo así definir claves alternativas.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué efecto tiene la opción SET DEFAULT en una clave ajena?",
+        "answer": "Sustituye el valor de la clave ajena por el valor por defecto definido, si se borra o modifica la clave primaria referenciada.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué representa un valor nulo en bases de datos?",
+        "answer": "Información desconocida, inaplicable, no válida o no proporcionada.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Para qué se necesitan valores nulos en BD?",
+        "answer": "Para representar atributos desconocidos, nuevos o inaplicables en ciertas tuplas.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué exige la Regla 0 de Codd?",
+        "answer": "Que todo sistema que se diga relacional debe gestionar completamente la BD solo con capacidades relacionales.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué representa la información en un sistema relacional según Codd?",
+        "answer": "Valores en tablas, incluso los metadatos (catálogo relacional).",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Cómo debe accederse a cualquier dato según la Regla 2?",
+        "answer": "Por nombre de tabla, valor de clave y nombre de columna.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué requiere el tratamiento de valores nulos?",
+        "answer": "Que el sistema los gestione sistemáticamente.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué es el catálogo en línea según la Regla 4?",
+        "answer": "Metainformación almacenada como tablas, accesible por el mismo lenguaje relacional.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué funciones debe cubrir el sublenguaje de datos según la Regla 5?",
+        "answer": "Definición, manipulación, vistas, restricciones, autorizaciones y transacciones.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué operaciones deben funcionar a nivel de conjunto según la Regla 7?",
+        "answer": "Inserciones, modificaciones y borrados.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué garantiza la independencia física?",
+        "answer": "Que cambios en el almacenamiento no afecten a los programas.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué garantiza la independencia lógica?",
+        "answer": "Que cambios en la estructura lógica no afecten a las aplicaciones.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Dónde deben almacenarse las reglas de integridad según la Regla 10?",
+        "answer": "En el catálogo, definidas con el lenguaje relacional, no en los programas.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué implica la independencia de la distribución?",
+        "answer": "Que la distribución de los datos no debe requerir cambiar los programas.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué prohíbe la Regla de la no subversión?",
+        "answer": "Usar lenguajes de bajo nivel para saltarse reglas de integridad.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué exige la Regla 6 de Codd sobre las vistas?",
+        "answer": "Que toda vista teóricamente actualizable pueda actualizarse por el sistema.",
+        "topic": "Modelo Relacional",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "31-05-2025"
+    }
+]

@@ -40,6 +40,10 @@ public class FlashcardService {
         return repository.findByTopicAndStatus(topic, status);
     }
 
+    public List<Flashcard> getByCollection(String collection) {
+        return repository.findByCollection(collection);
+    }
+
     public Flashcard save(Flashcard flashcard) {
         return repository.save(flashcard);
     }

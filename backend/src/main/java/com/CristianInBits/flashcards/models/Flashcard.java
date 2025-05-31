@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
@@ -18,8 +19,11 @@ public class Flashcard {
     private Long id;
 
     private String question;
+    
+    @Column(length = 500)
     private String answer;
     private String topic;
+    private String collection;
     private int level;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
@@ -93,5 +97,13 @@ public class Flashcard {
 
     public void setNextReviewDate(LocalDate nextReviewDate) {
         this.nextReviewDate = nextReviewDate;
+    }
+
+    public String getCollection() {
+        return collection;
+    }
+
+    public void setCollection(String collection) {
+        this.collection = collection;
     }
 }

@@ -51,7 +51,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 300px;
+    width: 400px;
     /* MISMO ANCHO QUE .card */
     margin: 0 auto;
 }
@@ -60,11 +60,10 @@ body {
 
 .card {
     position: relative;
-    width: 300px;
-    height: 200px;
+    width: 400px;
+    height: 250px;
     perspective: 1000px;
     margin: 0 auto 30px auto;
-    /* Añade margen debajo */
 }
 
 
@@ -111,9 +110,7 @@ body {
 .controls {
     display: flex;
     justify-content: space-between;
-    /* Reparte el espacio horizontal */
     width: 100%;
-    /* Mismo ancho que la tarjeta */
     gap: 1rem;
 }
 
@@ -197,4 +194,12 @@ body {
 
 .badge.APRENDIDA {
     background-color: #28a745;
+}
+
+.collection-selector {
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
 }

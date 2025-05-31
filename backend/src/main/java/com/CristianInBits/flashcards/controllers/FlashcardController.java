@@ -39,6 +39,11 @@ public class FlashcardController {
         return service.getById(id);
     }
 
+    @GetMapping("/byCollection")
+    public List<Flashcard> getByCollection(@RequestParam String collection) {
+        return service.getByCollection(collection);
+    }
+
     @PostMapping("/")
     public Flashcard create(@RequestBody Flashcard flashcard) {
         return service.save(flashcard);

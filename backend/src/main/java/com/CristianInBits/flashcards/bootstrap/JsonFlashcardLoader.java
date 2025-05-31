@@ -27,7 +27,8 @@ public class JsonFlashcardLoader {
     @PostConstruct
     public void loadFromJson() throws Exception {
         if (repository.count() == 0) {
-            InputStream inputStream = new ClassPathResource("data/flashcards.json").getInputStream();
+            //InputStream inputStream = new ClassPathResource("data/flashcards.json").getInputStream();
+            InputStream inputStream = new ClassPathResource("data/flashcardsBBDD.json").getInputStream();
             List<Flashcard> flashcards = mapper.readValue(inputStream, new TypeReference<>() {
             });
             repository.saveAll(flashcards);

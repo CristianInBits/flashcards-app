@@ -1,15 +1,28 @@
 [
-    {
-        "question": "¿Qué se considera en la 1ª Abstracción de la Programación Concurrente?",
-        "answer": "Se considera que cada proceso se ejecuta en su propio procesador.",
-        "level": 0,
-        "nextReviewDate": "30-05-2025"
-    },
-    {
-        "question": "¿Qué se considera en la 2ª Abstracción de la Programación Concurrente?",
-        "answer": "Se ignoran las velocidades relativas de cada proceso, lo que posibilita considerar sólo las secuencias de instrucciones que se ejecutan.",
-        "topic": "Programación Concurrente",
-        "level": 1,
-        "nextReviewDate": "31-05-2025"
-    }
+    [
+        {
+            "question": "¿Cuál es el río más largo del mundo?",
+            "answer": "El río Amazonas",
+            "topic": "Geografía",
+            "collection": "cultura-general",
+            "level": 0,
+            "nextReviewDate": "30-05-2025"
+        },
+        {
+            "question": "¿En qué año llegó el ser humano por primera vez a la Luna?",
+            "answer": "En 1969",
+            "topic": "Historia",
+            "collection": "cultura-general",
+            "level": 0,
+            "nextReviewDate": "30-05-2025"
+        },
+        {
+            "question": "¿Quién pintó la Mona Lisa?",
+            "answer": "Leonardo da Vinci",
+            "topic": "Arte",
+            "collection": "cultura-general",
+            "level": 0,
+            "nextReviewDate": "30-05-2025"
+        }
+    ]
 ]
