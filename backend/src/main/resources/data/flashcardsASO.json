@@ -3,432 +3,432 @@
         "question": "¿Qué significa DSM en el contexto de los sistemas operativos?",
         "answer": "DSM significa Memoria Compartida Distribuida (Distributed Shared Memory).",
         "topic": "Memoria Compartida Distribuida",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué arquitectura se utiliza típicamente en sistemas DSM?",
         "answer": "Arquitectura NUMA (Non Uniform Memory Access).",
         "topic": "Memoria Compartida Distribuida",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué característica tiene el acceso a memoria en arquitecturas NUMA?",
         "answer": "El tiempo de acceso a memoria depende de si el dato está en memoria local o remota.",
         "topic": "Memoria Compartida Distribuida",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Cómo es la comunicación entre procesos en sistemas DSM?",
         "answer": "Es implícita, se realiza por memoria compartida y es transparente para el programador.",
         "topic": "Memoria Compartida Distribuida",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Cuáles son los principales problemas que deben resolverse en una arquitectura DSM?",
         "answer": "Coherencia, consistencia y sincronización.",
         "topic": "Memoria Compartida Distribuida",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Cómo se resuelve el problema de coherencia en sistemas DSM?",
         "answer": "Mediante protocolos Source-Snoopy o de directorio implementados en hardware.",
         "topic": "Memoria Compartida Distribuida",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Cómo se resuelve el problema de consistencia en sistemas DSM?",
         "answer": "A través de modelos de consistencia a alto nivel.",
         "topic": "Memoria Compartida Distribuida",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Cómo se resuelve el problema de sincronización en sistemas DSM?",
         "answer": "Mediante mecanismos clásicos como cerrojos, semáforos, etc.",
         "topic": "Memoria Compartida Distribuida",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué sistema permite traducir las operaciones de carga/almacenamiento en DSM?",
         "answer": "Un sistema de mensajería asíncrono que convierte las operaciones en peticiones y respuestas por red.",
         "topic": "Memoria Compartida Distribuida",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Cuál es la definición general de un sistema DSM?",
         "answer": "Es un sistema en el que la memoria está físicamente distribuida pero se presenta como un espacio de direcciones único y compartido entre procesadores.",
         "topic": "Memoria Compartida Distribuida",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué ventajas ofrece un sistema DSM como arquitectura híbrida?",
         "answer": "Programación sencilla, comunicación implícita entre procesos y buena escalabilidad.",
         "topic": "Memoria Compartida Distribuida",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Cuál es el objetivo de un modelo de consistencia en DSM?",
         "answer": "Definir el orden en el que se materializan las operaciones de memoria entre múltiples procesadores.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué diferencia hay entre el acceso a memoria en sistemas monoprocesador y multiprocesador?",
         "answer": "En monoprocesador las instrucciones de memoria parecen ejecutarse secuencialmente; en multiprocesador se requiere definir cómo se intercalan las instrucciones entre procesadores.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué es un modelo de consistencia estricta?",
         "answer": "Un modelo en el que cualquier lectura debe devolver el valor más reciente escrito por cualquier procesador.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué condiciones deben cumplirse en un sistema con consistencia estricta?",
         "answer": "Debe existir un tiempo global, las operaciones deben verse como atómicas y todos los procesadores deben observar el mismo orden de operaciones.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Por qué es costosa la implementación del modelo de consistencia estricta?",
         "answer": "Porque requiere simular un tiempo global y lograr consenso entre procesadores mediante broadcast ordenado.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué es un modelo de consistencia secuencial?",
         "answer": "Es un modelo en el que todas las operaciones de todos los procesadores se ordenan de forma secuencial y todos los procesadores observan el mismo orden.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué condición adicional debe cumplir el orden global en consistencia secuencial?",
         "answer": "Debe respetar el orden del programa de cada procesador.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué diferencia clave hay entre consistencia estricta y consistencia secuencial respecto a la lectura de valores?",
         "answer": "En consistencia secuencial se puede leer un valor antiguo si se puede justificar con un orden global válido.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Cómo se construye un orden global válido en consistencia secuencial?",
         "answer": "Se construye una secuencia lógica que todos los procesadores acepten, respetando el orden local de cada uno, aunque no coincida con el orden real.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Por qué una lectura que devuelve un valor desactualizado puede ser válida en consistencia secuencial?",
         "answer": "Porque en el orden global imaginado la lectura ocurre antes de las escrituras que actualizan ese valor.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Cómo se tratan las escrituras en consistencia secuencial?",
         "answer": "Las escrituras se propagan mediante total_order_broadcast, garantizando que todos los nodos las reciben en el mismo orden.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué garantiza el modelo de consistencia causal?",
         "answer": "Que las escrituras relacionadas causalmente se vean en el mismo orden en todos los procesadores.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué ocurre con las escrituras concurrentes en consistencia causal?",
         "answer": "Pueden observarse en diferente orden por distintos procesadores.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Cómo se determina que dos escrituras tienen una relación causal?",
         "answer": "Si ocurren en orden de programa en el mismo procesador o si una escritura ocurre después de una lectura que depende de otra escritura previa.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué estructura se usa para gestionar relaciones causales en DSM?",
         "answer": "Se utilizan grafos de dependencias para identificar relaciones entre operaciones.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿En qué se diferencia la implementación del modelo causal respecto al secuencial?",
         "answer": "Es similar, pero solo se realiza el broadcast de ordenación para escrituras con relación causal, no para todas.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué modelo de consistencia cumple un escenario en el que todas las lecturas devuelven el último valor escrito globalmente?",
         "answer": "Consistencia estricta.",
         "topic": "Ejemplos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué modelo se cumple si todos los procesos observan el mismo orden global, aunque se lean valores antiguos?",
         "answer": "Consistencia secuencial.",
         "topic": "Ejemplos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué modelo se cumple cuando se respeta el orden global y también las relaciones de causalidad entre escrituras?",
         "answer": "Consistencia secuencial y causal.",
         "topic": "Ejemplos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué modelo permite que un proceso vea una escritura más reciente antes que una más antigua si no hay relación causal entre ellas?",
         "answer": "Consistencia causal pero no secuencial.",
         "topic": "Ejemplos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué sucede cuando el orden observado por los procesos viola tanto la causalidad como la secuencialidad?",
         "answer": "No se cumple ninguno de los modelos de consistencia estudiados.",
         "topic": "Ejemplos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué garantiza el modelo de consistencia PRAM?",
         "answer": "Que todos los procesadores observen las escrituras de un mismo procesador en el orden en que fueron emitidas.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Cómo trata el modelo PRAM las escrituras entre procesos diferentes?",
         "answer": "Como concurrentes, por lo que pueden observarse en diferente orden según el procesador.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué estructura lógica representa el comportamiento del modelo PRAM?",
         "answer": "Buffers FIFO desde cada procesador hacia los demás, manteniendo el orden local de las escrituras.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué tipo de relación no se respeta en el modelo PRAM?",
         "answer": "Las relaciones de causalidad entre operaciones de distintos procesos.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué lo convierte en el modelo más flexible de consistencia?",
         "answer": "Permite lecturas en diferentes órdenes de escrituras concurrentes, mientras se respete el orden interno de cada proceso.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué garantiza el modelo de consistencia Slow Memory?",
         "answer": "Que las escrituras de un mismo procesador a una misma posición de memoria se vean en el mismo orden en todos los procesos.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué diferencia hay entre PRAM y Slow Memory?",
         "answer": "PRAM mantiene el orden de todas las escrituras de un proceso; Slow Memory solo exige orden entre escrituras a la misma dirección de memoria.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué ocurre en el modelo Slow Memory con escrituras de un mismo proceso a distintas variables?",
         "answer": "Pueden observarse en cualquier orden, no hay exigencia de respetar el orden de programa entre distintas variables.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué invalida una ejecución en el modelo Slow Memory?",
         "answer": "Que un proceso observe las escrituras de otro sobre una misma variable en un orden diferente al de programa.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué características tiene un ejemplo que no cumple ninguno de los modelos estudiados?",
         "answer": "No se respeta ni el orden entre variables, ni el orden de programa sobre la misma variable, ni ninguna relación de consistencia conocida.",
         "topic": "Modelos de consistencia",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué limita la aplicación automática de los modelos de consistencia tradicionales en DSM?",
         "answer": "Que no todas las variables son compartidas y no siempre se necesita aplicar consistencia a todas las operaciones de memoria.",
         "topic": "Consistencia basada en sincronización",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué introduce el enfoque de modelos como consistencia débil o release consistency?",
         "answer": "El uso de estructuras de sincronización explícitas para indicar cuándo se debe aplicar consistencia.",
         "topic": "Consistencia basada en sincronización",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué responsabilidad recae en el desarrollador en estos modelos de consistencia?",
         "answer": "El desarrollador debe marcar las secciones críticas y decidir cuándo aplicar mecanismos de consistencia.",
         "topic": "Consistencia basada en sincronización",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué ventaja tiene este enfoque para el sistema operativo o middleware?",
         "answer": "Reduce la complejidad y el coste de mantener la consistencia de memoria de forma automática.",
         "topic": "Consistencia basada en sincronización",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué tipo de estructuras permiten aplicar consistencia de forma controlada?",
         "answer": "Estructuras de sincronización explícitas como cerrojos, regiones críticas o primitivas del lenguaje.",
         "topic": "Consistencia basada en sincronización",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué se comparte en un sistema DSM basado en páginas?",
         "answer": "Se comparte el espacio de direcciones a nivel de página, que puede migrar dinámicamente entre memorias físicas.",
         "topic": "Construcción del espacio de memoria compartido",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué componente del sistema gestiona el acceso a páginas remotas en page-based DSM?",
         "answer": "El sistema operativo distribuido (DOS), que captura accesos remotos y los traduce a mensajes usando interrupciones.",
         "topic": "Construcción del espacio de memoria compartido",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué se comparte en el modelo shared-variable DSM?",
         "answer": "Solo las variables o estructuras de datos marcadas explícitamente como compartidas.",
         "topic": "Construcción del espacio de memoria compartido",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué tecnologías apoyan el funcionamiento del modelo shared-variable?",
         "answer": "Compiladores específicos y librerías en tiempo de ejecución para gestionar el acceso compartido.",
         "topic": "Construcción del espacio de memoria compartido",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué caracteriza al modelo shared-object DSM?",
         "answer": "Las estructuras compartidas se encapsulan como objetos con estado y métodos, accesibles desde cualquier proceso.",
         "topic": "Construcción del espacio de memoria compartido",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué ventaja tiene el modelo shared-object respecto a los anteriores?",
         "answer": "Abstrae completamente la ubicación física y permite invocar métodos sobre objetos compartidos sin gestionar directamente las variables.",
         "topic": "Construcción del espacio de memoria compartido",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     },
     {
         "question": "¿Qué tipo de soporte utilizan los modelos shared-variable y shared-object?",
         "answer": "Ambos se apoyan en compiladores y entornos de ejecución (runtime) para funcionar.",
         "topic": "Construcción del espacio de memoria compartido",
-        "collection": "Ampliación de Sistemas Operativos",
+        "collection": "sistemas-operativos",
         "level": 0,
-        "nextReviewDate": "31-05-2025"
+        "nextReviewDate": "02-06-2025"
     }
 ]

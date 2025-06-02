@@ -1,7 +1,6 @@
 package com.CristianInBits.flashcards.services;
 
 import com.CristianInBits.flashcards.models.Flashcard;
-import com.CristianInBits.flashcards.models.LearningStatus;
 import com.CristianInBits.flashcards.repository.FlashcardRepository;
 import org.springframework.stereotype.Service;
 
@@ -32,27 +31,16 @@ public class FlashcardService {
         return repository.findByTopic(topic);
     }
 
-    public List<Flashcard> getByStatus(LearningStatus status) {
-        return repository.findByStatus(status);
-    }
-
-    public List<Flashcard> getByTopicAndStatus(String topic, LearningStatus status) {
-        return repository.findByTopicAndStatus(topic, status);
-    }
-
     public List<Flashcard> getByCollection(String collection) {
         return repository.findByCollection(collection);
     }
 
-    public Flashcard save(Flashcard flashcard) {
-        return repository.save(flashcard);
+    public List<Flashcard> getByCollectionAndTopic(String collection, String topic) {
+        return repository.findByCollectionAndTopic(collection, topic);
     }
 
-    public Optional<Flashcard> updateStatus(Long id, LearningStatus status) {
-        return repository.findById(id).map(card -> {
-            card.setStatus(status);
-            return repository.save(card);
-        });
+    public Flashcard save(Flashcard flashcard) {
+        return repository.save(flashcard);
     }
 
     public Optional<Flashcard> delete(Long id) {
@@ -63,6 +51,7 @@ public class FlashcardService {
     }
 
     public Flashcard updateLearningProgress(Long id, boolean remembered) {
+        
         Flashcard card = repository.findById(id).orElseThrow();
         int[] intervals = { 0, 1, 3, 7, 30 };
 
@@ -71,10 +60,12 @@ public class FlashcardService {
         } else {
             card.setLevel(0);
         }
-
         LocalDate nextReview = LocalDate.now().plusDays(intervals[card.getLevel()]);
         card.setNextReviewDate(nextReview);
         return repository.save(card);
     }
 
+    public List<Flashcard> getDueCardsByCollection(String collection) {
+        return repository.findByCollectionAndNextReviewDateLessThanEqual(collection, LocalDate.now());
+    }
 }

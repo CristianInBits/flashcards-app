@@ -1,7 +1,6 @@
 package com.CristianInBits.flashcards.controllers;
 
 import com.CristianInBits.flashcards.models.Flashcard;
-import com.CristianInBits.flashcards.models.LearningStatus;
 import com.CristianInBits.flashcards.services.FlashcardService;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,15 +19,16 @@ public class FlashcardController {
     }
 
     @GetMapping("/")
-    public List<Flashcard> getAll(
+    public List<Flashcard> getFiltered(
             @RequestParam(required = false) String topic,
-            @RequestParam(required = false) LearningStatus status) {
-        if (topic != null && status != null) {
-            return service.getByTopicAndStatus(topic, status);
+            @RequestParam(required = false) String collection) {
+
+        if (topic != null && collection != null) {
+            return service.getByCollectionAndTopic(collection, topic);
+        } else if (collection != null) {
+            return service.getByCollection(collection);
         } else if (topic != null) {
             return service.getByTopic(topic);
-        } else if (status != null) {
-            return service.getByStatus(status);
         } else {
             return service.getAll();
         }
@@ -39,26 +39,13 @@ public class FlashcardController {
         return service.getById(id);
     }
 
-    @GetMapping("/byCollection")
-    public List<Flashcard> getByCollection(@RequestParam String collection) {
-        return service.getByCollection(collection);
-    }
-
     @PostMapping("/")
     public Flashcard create(@RequestBody Flashcard flashcard) {
         return service.save(flashcard);
     }
 
-    @PostMapping("/{id}/status")
-    public Flashcard updateStatus(@PathVariable Long id, @RequestParam LearningStatus status) {
-        return service.updateStatus(id, status)
-                .orElseThrow(NoSuchElementException::new);
-    }
-
     @PostMapping("/{id}/progress")
-    public Flashcard updateProgress(
-            @PathVariable Long id,
-            @RequestParam boolean remembered) {
+    public Flashcard updateProgress( @PathVariable Long id, @RequestParam boolean remembered) {
         return service.updateLearningProgress(id, remembered);
     }
 

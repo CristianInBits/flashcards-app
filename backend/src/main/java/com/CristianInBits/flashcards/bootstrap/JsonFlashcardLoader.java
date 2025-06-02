@@ -27,12 +27,22 @@ public class JsonFlashcardLoader {
     @PostConstruct
     public void loadFromJson() throws Exception {
         if (repository.count() == 0) {
-            //InputStream inputStream = new ClassPathResource("data/flashcards.json").getInputStream();
-            InputStream inputStream = new ClassPathResource("data/flashcardsBBDD.json").getInputStream();
-            List<Flashcard> flashcards = mapper.readValue(inputStream, new TypeReference<>() {
-            });
-            repository.saveAll(flashcards);
-            System.out.println("✅ Flashcards cargadas desde JSON");
+            String[] files = {
+                    "data/flashcardsBBDD.json",
+                    "data/flashcardsASO.json",
+                    "data/flashcardsPC.json"
+            };
+
+            for (String file : files) {
+                InputStream input = new ClassPathResource(file).getInputStream();
+                List<Flashcard> cards = mapper.readValue(input, new TypeReference<>() {
+                });
+                repository.saveAll(cards);
+                System.out.println("Cargadas desde: " + file + " (" + cards.size() + " tarjetas)");
+            }
+        } else {
+            System.out.println("Ya existen tarjetas en la base de datos, no se cargan desde JSON.");
         }
     }
+
 }
