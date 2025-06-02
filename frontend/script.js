@@ -1,15 +1,23 @@
-// 🌐 Configuración global
+// 🌐 ===== CONFIGURACIÓN GLOBAL =====
+
+// Estado de las tarjetas cargadas
 let flashcards = [];
 let currentIndex = 0;
 let currentCollection = "bases-datos";
 
+// Referencias DOM principales
 const flashcard = document.getElementById("flashcard");
 const cardInner = flashcard.querySelector(".card-inner");
 const questionEl = document.getElementById("question");
 const answerEl = document.getElementById("answer");
 const selector = document.getElementById("themeSelector");
 
-// 🚀 Carga de tarjetas desde backend por colección
+// 🔁 ===== FUNCIONES DE NEGOCIO =====
+
+/**
+ * 🚀 Carga las flashcards de una colección específica desde el backend.
+ * @param {string} collection - Nombre de la colección (ej. "bases-datos")
+ */
 async function loadFlashcardsByCollection(collection) {
     try {
         const res = await fetch(`http://localhost:8080/api/flashcards/?collection=${collection}`);
@@ -21,7 +29,9 @@ async function loadFlashcardsByCollection(collection) {
     }
 }
 
-// 🔄 Cambio de colección desde el selector
+/**
+ * 🔄 Actualiza la colección cuando el usuario selecciona otra en el menú.
+ */
 async function changeCollection() {
     const select = document.getElementById("collectionSelect");
     currentCollection = select.value;
@@ -30,17 +40,19 @@ async function changeCollection() {
     showCard();
 }
 
-// ✅ Actualiza el progreso de aprendizaje (nivel y fecha)
+/**
+ * ✅ Informa al backend del resultado del repaso actual y actualiza la tarjeta.
+ * @param {boolean} remembered - true si se recordó correctamente, false si se falló
+ */
 async function updateProgress(remembered) {
     const currentCard = flashcards[currentIndex];
     try {
-        const res = await fetch(`http://localhost:8080/api/flashcards/${currentCard.id}/progress?remembered=${remembered}`, {
-            method: "POST"
-        });
+        const res = await fetch(
+            `http://localhost:8080/api/flashcards/${currentCard.id}/progress?remembered=${remembered}`,
+            { method: "POST" }
+        );
 
-        if (!res.ok) {
-            throw new Error("Error actualizando el progreso");
-        }
+        if (!res.ok) throw new Error("Error actualizando el progreso");
 
         const updatedCard = await res.json();
         flashcards[currentIndex] = updatedCard;
@@ -52,41 +64,57 @@ async function updateProgress(remembered) {
     }
 }
 
-// 📄 Muestra la tarjeta actual
+/**
+ * 📄 Muestra la tarjeta actual (pregunta, respuesta y metadatos).
+ */
 function showCard() {
     const card = flashcards[currentIndex];
-    document.getElementById("question").textContent = card.question;
-    document.getElementById("answer").textContent = card.answer;
-    document.getElementById("flashcard").classList.remove("flipped");
+    questionEl.textContent = card.question;
+    answerEl.textContent = card.answer;
+    flashcard.classList.remove("flipped");
 
     const badge = document.getElementById("reviewInfo");
     badge.textContent = `Nivel: ${card.level} | Revisión: ${card.nextReviewDate}`;
     badge.className = "badge";
 }
 
-// ⬅ Muestra la tarjeta anterior
+/**
+ * ⬅ Muestra la tarjeta anterior del mazo (circular).
+ */
 function prevCard() {
     currentIndex = (currentIndex - 1 + flashcards.length) % flashcards.length;
     showCard();
 }
 
-// ➡ Muestra la tarjeta siguiente
+/**
+ * ➡ Muestra la siguiente tarjeta del mazo (circular).
+ */
 function nextCard() {
     currentIndex = (currentIndex + 1) % flashcards.length;
     showCard();
 }
 
-// 🧠 Gira la tarjeta al hacer clic
+// 🧠 ===== EVENTOS DE INTERACCIÓN =====
+
+/**
+ * 🧠 Permite girar la tarjeta para ver la respuesta.
+ */
 flashcard.addEventListener("click", () => {
     flashcard.classList.toggle("flipped");
 });
 
-// 🎨 Cambia el tema desde el selector
+/**
+ * 🎨 Permite cambiar el tema visual seleccionado por el usuario.
+ */
 selector.addEventListener("change", (e) => {
     document.body.classList.remove("theme-1", "theme-2", "theme-3");
     document.body.classList.add(e.target.value);
 });
 
-// 🎯 Tema inicial y carga de tarjetas por colección
+// 🎯 ===== INICIALIZACIÓN =====
+
+// Tema visual por defecto
 document.body.classList.add("theme-2");
+
+// Carga inicial de tarjetas desde la colección base
 loadFlashcardsByCollection(currentCollection);

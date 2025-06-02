@@ -1,3 +1,5 @@
+/* 🎨 ===== VARIABLES DE COLOR POR TEMA ===== */
+
 :root {
     --bg: #f0f4ff;
     --front: #ffffff;
@@ -7,6 +9,7 @@
     --text: #1f2937;
 }
 
+/* 🌸 Tema Sakura Pastel */
 .theme-1 {
     --bg: #fdf6f9;
     --front: #ffffff;
@@ -16,6 +19,7 @@
     --text: #333333;
 }
 
+/* 🌊 Tema Brisa Marina */
 .theme-2 {
     --bg: #e0f7fa;
     --front: #ffffff;
@@ -25,6 +29,7 @@
     --text: #004d40;
 }
 
+/* 🌑 Tema Noche Elegante */
 .theme-3 {
     --bg: #1e1e2f;
     --front: #2c2c3c;
@@ -34,6 +39,7 @@
     --text: #f1f1f1;
 }
 
+/* 🧱 ===== ESTILO GLOBAL ===== */
 
 body {
     font-family: sans-serif;
@@ -52,20 +58,19 @@ body {
     align-items: center;
     justify-content: center;
     width: 400px;
-    /* MISMO ANCHO QUE .card */
     margin: 0 auto;
 }
 
-
+/* 🃏 ===== TARJETA FLIP ===== */
 
 .card {
     position: relative;
     width: 400px;
     height: 250px;
     perspective: 1000px;
+    /* para animación 3D */
     margin: 0 auto 30px auto;
 }
-
 
 .card-inner {
     width: 100%;
@@ -75,11 +80,12 @@ body {
     position: relative;
 }
 
-
+/* Estado girado (cuando se hace clic) */
 .card.flipped .card-inner {
     transform: rotateY(180deg);
 }
 
+/* Estilos compartidos para ambas caras */
 .front,
 .back {
     display: flex;
@@ -96,7 +102,6 @@ body {
     box-sizing: border-box;
 }
 
-
 .front {
     background: var(--front);
 }
@@ -104,8 +109,10 @@ body {
 .back {
     background: var(--back);
     transform: rotateY(180deg);
+    /* oculta hasta el giro */
 }
 
+/* 🔁 ===== BOTONES DE NAVEGACIÓN ===== */
 
 .controls {
     display: flex;
@@ -130,6 +137,8 @@ body {
     background-color: var(--button-hover);
 }
 
+/* 🎨 ===== SELECTOR DE TEMA (ESQUINA) ===== */
+
 #themeSelector {
     position: fixed;
     top: 1rem;
@@ -142,6 +151,8 @@ body {
     z-index: 1000;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
+
+/* 📈 ===== BOTONES DE PROGRESO (fallo / acierto) ===== */
 
 .status-controls {
     display: flex;
@@ -161,15 +172,15 @@ body {
 
 .status-controls button:nth-child(1) {
     background-color: #ffcccc;
+    /* botón fallo */
 }
 
 .status-controls button:nth-child(2) {
-    background-color: #fff2b8;
+    background-color: #ccffcc;
+    /* botón acierto */
 }
 
-.status-controls button:nth-child(3) {
-    background-color: #ccffcc;
-}
+/* 🔖 ===== INSIGNIA DE NIVEL Y FECHA DE REPASO ===== */
 
 .badge {
     position: absolute;
@@ -181,20 +192,10 @@ body {
     border-radius: 12px;
     color: rgb(0, 0, 0);
     z-index: 10;
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
-.badge.NO_CONOCIDA {
-    background-color: #ff4d4d;
-}
-
-.badge.MEDIO {
-    background-color: #ffcc00;
-    color: black;
-}
-
-.badge.APRENDIDA {
-    background-color: #28a745;
-}
+/* 📚 ===== SELECTOR DE COLECCIÓN ===== */
 
 .collection-selector {
     margin-bottom: 1rem;

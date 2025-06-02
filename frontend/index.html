@@ -5,10 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flashcards</title>
+
+    <!-- 🎨 Estilos base del proyecto -->
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+
+    <!-- Selector de temas visuales para la interfaz -->
     <select id="themeSelector">
         <option value="theme-2">🌊 Brisa Marina</option>
         <option value="theme-1">🌸 Sakura Pastel</option>
@@ -17,6 +21,7 @@
 
     <div class="container">
 
+        <!-- Selector de colección de tarjetas -->
         <div class="collection-selector">
             <label for="collectionSelect">📚 Colección:</label>
             <select id="collectionSelect" onchange="changeCollection()">
@@ -26,20 +31,27 @@
             </select>
         </div>
 
+        <!-- Flashcard actual: pregunta y respuesta -->
         <div class="card" id="flashcard">
             <div class="card-inner">
+                <!-- Cara frontal con la pregunta -->
                 <div class="front" id="question">Cargando...</div>
+
+                <!-- Cara trasera con la respuesta -->
                 <div class="back" id="answer">...</div>
             </div>
+
+            <!-- ℹInformación del nivel de aprendizaje y próxima revisión -->
             <div class="badge" id="reviewInfo">Nivel 0 - Revisión: 30-05-2025</div>
         </div>
 
-
+        <!-- Controles de navegación entre tarjetas -->
         <div class="controls">
             <button onclick="prevCard()">⬅ Anterior</button>
             <button onclick="nextCard()">Siguiente ➡</button>
         </div>
 
+        <!-- 📈 Botones para actualizar el progreso de aprendizaje -->
         <div class="status-controls">
             <button onclick="updateProgress(false)">❌ Fallé</button>
             <button onclick="updateProgress(true)">✅ Recordé</button>
@@ -47,6 +59,7 @@
 
     </div>
 
+    <!-- Lógica JS principal -->
     <script src="script.js"></script>
 </body>
 
