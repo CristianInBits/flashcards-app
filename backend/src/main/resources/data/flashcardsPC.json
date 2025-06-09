@@ -1,26 +1,594 @@
 [
     {
-        "question": "¿Cuál es el río más largo del mundo?",
-        "answer": "El río Amazonas",
-        "topic": "Geografía",
-        "collection": "cultura-general",
+        "question": "¿Qué estudia la programación concurrente?",
+        "answer": "El desarrollo de programas que pueden realizar varias tareas al mismo tiempo.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
         "level": 0,
-        "nextReviewDate": "30-05-2025"
+        "nextReviewDate": "11-06-2025"
     },
     {
-        "question": "¿En qué año llegó el ser humano por primera vez a la Luna?",
-        "answer": "En 1969",
-        "topic": "Historia",
-        "collection": "cultura-general",
+        "question": "¿En qué década surge la programación concurrente como disciplina?",
+        "answer": "En los años 60.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
         "level": 0,
-        "nextReviewDate": "30-05-2025"
+        "nextReviewDate": "11-06-2025"
     },
     {
-        "question": "¿Quién pintó la Mona Lisa?",
-        "answer": "Leonardo da Vinci",
-        "topic": "Arte",
-        "collection": "cultura-general",
+        "question": "¿Qué permitió que los programas pudieran realizar tareas concurrentemente?",
+        "answer": "La evolución de los lenguajes de programación y sus librerías.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
         "level": 0,
-        "nextReviewDate": "30-05-2025"
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué lenguajes de programación permiten desarrollar programas concurrentes?",
+        "answer": "Lenguajes como C/C++, Java, JavaScript, Scala, Go, C#, Haskell, Erlang, OCaml, entre otros.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué es un programa secuencial?",
+        "answer": "Un conjunto de instrucciones que se ejecutan una tras otra siguiendo una secuencia determinada por un algoritmo.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué representa un fichero .exe en Windows?",
+        "answer": "Un programa secuencial almacenado en el disco duro.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué es un proceso?",
+        "answer": "La ejecución de un programa secuencial en un sistema informático.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué recursos posee un proceso del sistema operativo?",
+        "answer": "Su propio espacio de memoria y su propia pila de ejecución.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Cómo se comunican habitualmente los procesos en Linux?",
+        "answer": "Mediante pipes (tuberías).",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué son los hilos (threads)?",
+        "answer": "Procesos ligeros que se ejecutan en el mismo espacio de memoria y permiten desarrollar programas concurrentes.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué diferencia clave hay entre procesos e hilos respecto a la memoria?",
+        "answer": "Los procesos tienen memoria separada, mientras que los hilos comparten toda la memoria del programa.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué desventaja tienen los hilos frente a los procesos pesados?",
+        "answer": "Un fallo en un hilo puede afectar a todo el programa y provocar su finalización.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué ventaja tienen los hilos sobre los procesos pesados?",
+        "answer": "Consumen menos memoria y se crean más rápido.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿A qué dos niveles puede darse la concurrencia?",
+        "answer": "A nivel de sistema operativo y a nivel de programa.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué permite la concurrencia a nivel de sistema operativo?",
+        "answer": "La ejecución concurrente de procesos a partir de ficheros ejecutables.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué permite la concurrencia a nivel de programa?",
+        "answer": "La ejecución concurrente de fragmentos de código mediante hilos.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué es un hilo (thread) en concurrencia a nivel de programa?",
+        "answer": "La ejecución independiente de un método dentro del mismo programa, compartiendo memoria.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué diferencia hay entre un proceso del sistema operativo y un hilo de programa?",
+        "answer": "El proceso es pesado y tiene memoria propia; el hilo es ligero y comparte memoria con otros hilos del programa.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué son las fibras en programación concurrente?",
+        "answer": "Procesos ligeros gestionados por el lenguaje de programación, sin intervención del sistema operativo.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué ventaja tienen las fibras sobre los hilos?",
+        "answer": "Son mucho más ligeras, se crean casi instantáneamente y permiten cientos de miles por servidor.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Cuándo se dice que dos procesos son concurrentes?",
+        "answer": "Cuando la primera instrucción de uno se ejecuta entre la primera y la última del otro.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué es un programa concurrente?",
+        "answer": "Un conjunto de programas secuenciales cuyos procesos se pueden ejecutar simultáneamente.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué es un sistema concurrente?",
+        "answer": "Un sistema informático que permite ejecutar varios procesos concurrentemente.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué tipos de dispositivos actuales se consideran sistemas concurrentes?",
+        "answer": "Servidores, PCs, móviles, tabletas y dispositivos empotrados.",
+        "topic": "Introducción",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué caracteriza a un sistema monoprocesador?",
+        "answer": "Tiene un único procesador, como los PCs de hace algunos años.",
+        "topic": "Arquitecturas",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué es un procesador multicore?",
+        "answer": "Un chip que integra varios núcleos de ejecución (cores).",
+        "topic": "Arquitecturas",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué caracteriza a los sistemas multiprocesador muy acoplados?",
+        "answer": "Tienen varios núcleos en el mismo chip y son comunes en PCs, smartphones y servidores.",
+        "topic": "Arquitecturas",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Cómo se denomina también a los sistemas multiprocesador muy acoplados?",
+        "answer": "SMP (Symmetric Multi-Processing).",
+        "topic": "Arquitecturas",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué caracteriza a los sistemas multiprocesador poco acoplados?",
+        "answer": "Están formados por dispositivos conectados en red, como los clusters.",
+        "topic": "Arquitecturas",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Con qué otro nombre se conocen los sistemas multiprocesador poco acoplados?",
+        "answer": "Sistemas de memoria distribuida.",
+        "topic": "Arquitecturas",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué son los sistemas híbridos?",
+        "answer": "Dispositivos con varios procesadores multicore conectados en red, formando un cluster.",
+        "topic": "Arquitecturas",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué afirma la Ley de Moore?",
+        "answer": "Que aproximadamente cada dos años se duplica el número de transistores en un circuito integrado.",
+        "topic": "Arquitecturas",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Quién formuló la Ley de Moore y cuándo?",
+        "answer": "Gordon E. Moore, cofundador de Intel, el 19 de abril de 1965.",
+        "topic": "Arquitecturas",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Cuál fue la adaptación posterior de la Ley de Moore?",
+        "answer": "Que los transistores se doblarían cada 18 meses.",
+        "topic": "Arquitecturas",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Cómo se aumentaba tradicionalmente la potencia de cómputo?",
+        "answer": "Aumentando la frecuencia de reloj de los procesadores.",
+        "topic": "Arquitecturas",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Por qué ya no se puede aumentar indefinidamente la frecuencia de reloj?",
+        "answer": "Por impedimentos físicos como el consumo de potencia y la disipación del calor.",
+        "topic": "Arquitecturas",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué estrategia se usa actualmente para aumentar la potencia de cómputo?",
+        "answer": "Incluir varias unidades de proceso (cores) en cada procesador.",
+        "topic": "Arquitecturas",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Cuántos procesos puede ejecutar un procesador (core) a la vez?",
+        "answer": "Solo uno.",
+        "topic": "Ejecución y paralelismo",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué es el multiproceso?",
+        "answer": "Ejecución de un proceso por procesador en un sistema con memoria compartida.",
+        "topic": "Ejecución y paralelismo",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué es el procesamiento distribuido?",
+        "answer": "Ejecución de procesos en procesadores de distintas máquinas conectadas en red.",
+        "topic": "Ejecución y paralelismo",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Cuándo se obtiene paralelismo real?",
+        "answer": "Cuando hay un procesador por cada proceso, ya sea en multiproceso o en procesamiento distribuido.",
+        "topic": "Ejecución y paralelismo",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué es la multiprogramación?",
+        "answer": "Varios procesos comparten el mismo procesador, ejecutándose por turnos mediante compartición de tiempo.",
+        "topic": "Ejecución y paralelismo",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué es el paralelismo simulado o pseudoparalelismo?",
+        "answer": "Varios procesos comparten un procesador y se ejecutan por turnos, dando la impresión de simultaneidad.",
+        "topic": "Ejecución y paralelismo",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Cuándo se puede reducir el tiempo de ejecución total en paralelismo simulado?",
+        "answer": "Cuando algunos procesos esperan por entrada/salida, permitiendo al procesador ejecutar otros procesos.",
+        "topic": "Ejecución y paralelismo",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué tipo de paralelismo se da cuando cada proceso se ejecuta en su propio procesador?",
+        "answer": "Paralelismo real.",
+        "topic": "Ejecución y paralelismo",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué tipo de paralelismo se da cuando varios procesos comparten el mismo procesador?",
+        "answer": "Paralelismo simulado o pseudoparalelismo.",
+        "topic": "Ejecución y paralelismo",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Por qué suele usarse multiprogramación incluso en sistemas con varios procesadores?",
+        "answer": "Porque normalmente hay más procesos que procesadores.",
+        "topic": "Ejecución y paralelismo",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Por qué se usan abstracciones en programación concurrente?",
+        "answer": "Para centrarse en los procesos y sus relaciones sin depender de la arquitectura concreta.",
+        "topic": "Ejecución y paralelismo",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué plantea la primera abstracción de la programación concurrente?",
+        "answer": "Que cada proceso se ejecuta en su propio procesador.",
+        "topic": "Ejecución y paralelismo",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué plantea la segunda abstracción de la programación concurrente?",
+        "answer": "Que se ignoran las velocidades relativas de los procesos para centrarse en la secuencia de instrucciones.",
+        "topic": "Ejecución y paralelismo",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Cuál es el beneficio de considerar velocidades relativas distintas entre procesos?",
+        "answer": "Permite diseñar programas concurrentes correctos en cualquier arquitectura.",
+        "topic": "Ejecución y paralelismo",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué son los modelos de concurrencia?",
+        "answer": "Modelos teóricos que definen formas de implementar programas concurrentes.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Cuáles son las dos grandes familias de modelos de concurrencia?",
+        "answer": "Modelo de Memoria Compartida y Modelo de Paso de Mensajes.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué caracteriza a los modelos de concurrencia de bajo nivel?",
+        "answer": "Están cercanos a la funcionalidad ofrecida por el hardware.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué caracteriza a los modelos de concurrencia de alto nivel?",
+        "answer": "Se inspiran en modelos matemáticos y pueden implementarse sobre modelos de bajo nivel.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿De qué depende la elección de un modelo de concurrencia?",
+        "answer": "Del tipo de programa, el lenguaje y librerías utilizadas, y la arquitectura física del sistema.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué modelos de concurrencia no pueden usarse en sistemas multiprocesador poco acoplados?",
+        "answer": "Los modelos de memoria compartida.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué lenguajes sólo permiten modelos de concurrencia de alto nivel?",
+        "answer": "Lenguajes como JavaScript.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Cuáles son algunos de los modelos de concurrencia más utilizados?",
+        "answer": "Hilos y cerrojos, Actores, CSP, Programación funcional y STM.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué modelo de concurrencia representa 'Hilos y cerrojos'?",
+        "answer": "Un modelo de memoria compartida de bajo nivel, cercano al hardware.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Por qué es complejo programar con hilos y cerrojos?",
+        "answer": "Porque requiere gestionar manualmente el acceso concurrente a memoria compartida.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué modelo sigue el enfoque de actores?",
+        "answer": "Modelo de paso de mensajes, donde los actores se comunican enviándose mensajes.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué puede hacer un actor al recibir un mensaje?",
+        "answer": "Crear actores, enviar mensajes o cambiar su estado.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué caracteriza al modelo CSP (Comunicando procesos secuenciales)?",
+        "answer": "Los procesos se comunican mediante mensajes a través de canales.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué diferencia al modelo CSP del modelo de actores?",
+        "answer": "En CSP un proceso puede tener varios canales, en actores solo uno de recepción.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué caracteriza a la programación funcional como modelo de concurrencia?",
+        "answer": "Usa datos inmutables, lo que permite compartir información entre hilos sin conflictos.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Por qué los programas funcionales son fáciles de paralelizar?",
+        "answer": "Porque son expresados como composiciones de funciones puras.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué es la Memoria Software Transaccional (STM)?",
+        "answer": "Un modelo que aplica el concepto de transacciones de bases de datos a la memoria compartida.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué garantiza STM al ejecutar transacciones sobre memoria compartida?",
+        "answer": "Que todas las operaciones ocurren de forma atómica y no se ven estados intermedios.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué es la concurrencia en programación?",
+        "answer": "Una propiedad de un sistema o programa que permite realizar varias tareas que se solapan en el tiempo.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué es el paralelismo en programación?",
+        "answer": "Un comportamiento en tiempo de ejecución donde varias tareas se ejecutan simultáneamente.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Un programa concurrente se ejecuta siempre en paralelo?",
+        "answer": "No, un programa concurrente puede o no ejecutarse en paralelo.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿Qué es la paralelización?",
+        "answer": "El proceso de convertir un programa secuencial en uno concurrente para ejecutarlo en paralelo.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
+    },
+    {
+        "question": "¿A qué se ha asociado el término 'programación paralela' en los últimos años?",
+        "answer": "A la programación en sistemas de memoria distribuida (en red), considerados sistemas paralelos.",
+        "topic": "Modelos de concurrencia",
+        "collection": "programacion-concurrente",
+        "level": 0,
+        "nextReviewDate": "11-06-2025"
     }
 ]
