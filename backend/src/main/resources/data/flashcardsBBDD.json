@@ -150,5 +150,125 @@
         "collection": "bases-datos",
         "level": 0,
         "nextReviewDate": "31-05-2025"
+    },
+    {
+        "question": "¿Qué hace la cláusula DISTINCT en una consulta SQL?",
+        "answer": "Elimina las filas duplicadas del resultado, mostrando solo valores únicos.",
+        "topic": "SQL",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "13-05-2025"
+    },
+    {
+        "question": "¿Qué ocurre si no se especifica ALL ni DISTINCT en SELECT?",
+        "answer": "Se asume ALL por defecto, por lo que se muestran todos los valores, incluyendo duplicados.",
+        "topic": "SQL",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "13-05-2025"
+    },
+    {
+        "question": "¿Qué indica ORDER BY 2 en una consulta?",
+        "answer": "Ordena los resultados por la segunda columna listada en el SELECT.",
+        "topic": "SQL",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "13-05-2025"
+    },
+    {
+        "question": "¿Qué columnas se pueden usar en ORDER BY?",
+        "answer": "Cualquier columna listada en SELECT, incluso expresiones, y se pueden usar sus posiciones numéricas.",
+        "topic": "SQL",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "13-05-2025"
+    },
+    {
+        "question": "¿Qué simboliza SELECT *?",
+        "answer": "Selecciona todas las columnas de la tabla en el orden en que fueron definidas.",
+        "topic": "SQL",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "13-05-2025"
+    },
+    {
+        "question": "¿Qué hace la cláusula WHERE en una consulta SQL?",
+        "answer": "Filtra las filas seleccionadas que cumplen una condición lógica.",
+        "topic": "SQL",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "13-05-2025"
+    },
+    {
+        "question": "¿Para qué sirve el operador BETWEEN?",
+        "answer": "Selecciona valores dentro de un rango específico (ambos extremos incluidos).",
+        "topic": "SQL",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "13-05-2025"
+    },
+    {
+        "question": "¿Qué hace el operador LIKE en SQL?",
+        "answer": "Permite buscar patrones de texto utilizando los comodines _ (un carácter) y % (varios caracteres).",
+        "topic": "SQL",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "13-05-2025"
+    },
+    {
+        "question": "¿Cuál es la diferencia entre IN y OR en SQL?",
+        "answer": "IN comprueba si un valor pertenece a una lista, OR compara con cada valor individualmente.",
+        "topic": "SQL",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "13-05-2025"
+    },
+    {
+        "question": "¿Cómo se comprueba si un valor es nulo en SQL?",
+        "answer": "Usando IS NULL o IS NOT NULL, ya que los operadores de comparación no funcionan con NULL.",
+        "topic": "SQL",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "13-05-2025"
+    },
+    {
+        "question": "¿Qué función de agregación cuenta todas las filas, incluso si hay valores nulos?",
+        "answer": "COUNT(*)",
+        "topic": "SQL",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "13-05-2025"
+    },
+    {
+        "question": "¿Cuál es la diferencia entre WHERE y HAVING?",
+        "answer": "WHERE filtra filas antes de agrupar; HAVING filtra después de agrupar.",
+        "topic": "SQL",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "13-05-2025"
+    },
+    {
+        "question": "¿Qué significa usar LIKE 'A__a' en SQL?",
+        "answer": "Buscar cadenas de 4 caracteres que empiecen por A y terminen en a.",
+        "topic": "SQL",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "13-05-2025"
+    },
+    {
+        "question": "¿En qué orden se ejecutan las cláusulas SQL SELECT?",
+        "answer": "FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY",
+        "topic": "SQL",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "13-05-2025"
+    },
+    {
+        "question": "¿Cuál es la forma correcta de comprobar si un valor es nulo en SQL?",
+        "answer": "Usando IS NULL o IS NOT NULL.",
+        "topic": "SQL",
+        "collection": "bases-datos",
+        "level": 0,
+        "nextReviewDate": "13-05-2025"
     }
 ]
