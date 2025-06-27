@@ -1,0 +1,26 @@
+[
+    {
+        "question": "¿Qué significa DSM en el contexto de los sistemas operativos?",
+        "answer": "DSM significa Memoria Compartida Distribuida (Distributed Shared Memory).",
+        "topic": "Memoria Compartida Distribuida",
+        "collection": "sistemas-operativos",
+        "level": 0,
+        "nextReviewDate": "28-07-2025"
+    },
+    {
+        "question": "¿Qué arquitectura se utiliza típicamente en sistemas DSM?",
+        "answer": "Arquitectura NUMA (Non Uniform Memory Access).",
+        "topic": "Memoria Compartida Distribuida",
+        "collection": "sistemas-operativos",
+        "level": 0,
+        "nextReviewDate": "28-07-2025"
+    },
+    {
+        "question": "¿Qué estructura se usa para gestionar relaciones causales en DSM?",
+        "answer": "Se utilizan grafos de dependencias para identificar relaciones entre operaciones.",
+        "topic": "Modelos de consistencia",
+        "collection": "sistemas-operativos",
+        "level": 0,
+        "nextReviewDate": "28-07-2025"
+    }
+]
