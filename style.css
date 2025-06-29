@@ -138,6 +138,28 @@ body {
     background-color: var(--button-hover);
 }
 
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.theme-toggle select {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--button);
+    color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s;
+}
+
+.theme-toggle select:hover {
+    background-color: var(--button-hover);
+}
+
 /* 📱 Responsive */
 @media (max-width: 400px) {
     #card-container {
