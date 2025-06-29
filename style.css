@@ -1,49 +1,155 @@
+/* 🎨 ===== VARIABLES DE COLOR POR TEMA ===== */
+:root {
+    --bg: #f0f4ff;
+    --front: #ffffff;
+    --back: #dbeafe;
+    --button: #60a5fa;
+    --button-hover: #3b82f6;
+    --text: #1f2937;
+}
+
+/* 🌸 Tema Sakura Pastel */
+.theme-1 {
+    --bg: #fdf6f9;
+    --front: #ffffff;
+    --back: #ffe3e9;
+    --button: #f28baf;
+    --button-hover: #e5739f;
+    --text: #333333;
+}
+
+/* 🌊 Tema Brisa Marina */
+.theme-2 {
+    --bg: #e0f7fa;
+    --front: #ffffff;
+    --back: #b2ebf2;
+    --button: #4dd0e1;
+    --button-hover: #26c6da;
+    --text: #004d40;
+}
+
+/* 🌑 Tema Noche Elegante */
+.theme-3 {
+    --bg: #1e1e2f;
+    --front: #2c2c3c;
+    --back: #3a3a4a;
+    --button: #8ab4f8;
+    --button-hover: #669df6;
+    --text: #f1f1f1;
+}
+
+/* 🧱 ===== ESTILO GLOBAL ===== */
+
 body {
+    margin: 0;
+    padding: 0;
     font-family: sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    overflow-y: auto;
+}
+
+
+.app {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
-    background: #f0f0f0;
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 🃏 ===== TARJETA FLIP ===== */
+
+#card-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    perspective: 1000px;
+    margin-bottom: 30px;
 }
 
 .flashcard {
-    width: 300px;
-    height: 200px;
-    perspective: 1000px;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+    position: relative;
     cursor: pointer;
 }
 
-.flashcard>div {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
-    transition: transform 0.6s;
+.flashcard.flipped {
+    transform: rotateY(180deg);
+}
+
+.flashcard>.front,
+.flashcard>.back {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
     font-size: 1.2rem;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backface-visibility: hidden;
     border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
 }
 
 .front {
-    background: white;
-    color: black;
+    background: var(--front);
 }
 
 .back {
-    background: #333;
+    background: var(--back);
+    transform: rotateY(180deg);
+}
+
+/* 🔁 ===== BOTONES DE NAVEGACIÓN ===== */
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.controls button {
+    flex: 1;
+    min-width: 120px;
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--button);
     color: white;
-    transform: rotateY(180deg);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s;
 }
 
-.flashcard.flipped .front {
-    transform: rotateY(180deg);
+.controls button:hover {
+    background-color: var(--button-hover);
 }
 
-.flashcard.flipped .back {
-    transform: rotateY(0deg);
+/* 📱 Responsive */
+@media (max-width: 400px) {
+    #card-container {
+        width: 90vw;
+        height: 200px;
+    }
+
+    .controls {
+        width: 90vw;
+    }
+
+    .controls button {
+        font-size: 0.9rem;
+    }
 }
