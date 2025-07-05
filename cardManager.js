@@ -6,6 +6,7 @@ export async function loadCards() {
     try {
         const response = await fetch('cards.json');
         cards = await response.json();
+        updateProgressUI();
         return cards;
     } catch (error) {
         console.error('Error cargando tarjetas:', error);
@@ -28,12 +29,19 @@ export function renderCard(card) {
     });
 
     markCardAsSeen(currentIndex);
+    updateProgressUI();
 }
 
 function markCardAsSeen(index) {
     seenCards.add(index);
     localStorage.setItem('seen-cards', JSON.stringify([...seenCards]));
     console.log(`Tarjetas vistas: ${seenCards.size} de ${cards.length}`);
+}
+
+function updateProgressUI() {
+    const progressContainer = document.getElementById('progress');
+    if (!progressContainer) return;
+    progressContainer.textContent = `Progreso: ${seenCards.size} / ${cards.length}`;
 }
 
 export function getCards() {

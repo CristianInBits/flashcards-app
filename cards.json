@@ -22,5 +22,13 @@
         "collection": "sistemas-operativos",
         "level": 0,
         "nextReviewDate": "28-07-2025"
+    },
+    {
+        "question": "¿Qué estructura de datos se usa comúnmente en Haskell para representar listas?",
+        "answer": "Se utiliza la estructura de listas enlazadas inmutables, representadas por corchetes [].",
+        "topic": "Estructuras de datos",
+        "collection": "haskell",
+        "level": 0,
+        "nextReviewDate": "28-07-2025"
     }
 ]
