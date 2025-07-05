@@ -1,4 +1,5 @@
 let cards = [];
+let filteredCards = [];
 let currentIndex = 0;
 let seenCards = new Set();
 
@@ -7,15 +8,14 @@ export async function loadCards() {
         const response = await fetch('cards.json');
         cards = await response.json();
 
-        // Limpiar y conservar solo índices válidos
         const stored = JSON.parse(localStorage.getItem('seen-cards') || '[]');
         seenCards = new Set(stored.filter(index => index >= 0 && index < cards.length));
         localStorage.setItem('seen-cards', JSON.stringify([...seenCards]));
 
+        filteredCards = [...cards];
         updateProgressUI();
-
-        return cards;
-
+        populateCollections();
+        return filteredCards;
     } catch (error) {
         console.error('Error cargando tarjetas:', error);
         return [];
@@ -41,37 +41,53 @@ export function renderCard(card) {
 }
 
 function markCardAsSeen(index) {
-    seenCards.add(index);
-    localStorage.setItem('seen-cards', JSON.stringify([...seenCards]));
-    console.log(`Tarjetas vistas: ${seenCards.size} de ${cards.length}`);
+    const globalIndex = cards.indexOf(filteredCards[index]);
+    if (globalIndex !== -1) {
+        seenCards.add(globalIndex);
+        localStorage.setItem('seen-cards', JSON.stringify([...seenCards]));
+    }
 }
 
 function updateProgressUI() {
     const progressContainer = document.getElementById('progress');
     if (!progressContainer) return;
 
-    const percent = cards.length > 0 ? (seenCards.size / cards.length) * 100 : 0;
-    progressContainer.innerHTML = `<span>Progreso: ${seenCards.size} / ${cards.length}</span>`;
-    progressContainer.style.setProperty('--progress', `${percent}%`);
+    const seenInFilter = filteredCards.filter(card => seenCards.has(cards.indexOf(card))).length;
+    const percent = filteredCards.length > 0 ? (seenInFilter / filteredCards.length) * 100 : 0;
 
-    const progressBar = progressContainer;
-    const bar = progressBar.querySelector('::before');
-    if (bar) {
-        bar.style.width = `${percent}%`;
-    } else {
-        progressBar.style.setProperty('--progress', `${percent}%`);
-        progressBar.style.setProperty('background-size', `${percent}% 100%`);
-        progressBar.style.setProperty('--progress-width', `${percent}%`);
-        progressBar.style.setProperty('--progress-text', `'Progreso: ${seenCards.size} / ${cards.length}'`);
-        progressBar.style.setProperty('position', 'relative');
-    }
+    progressContainer.innerHTML = `<span>Progreso: ${seenInFilter} / ${filteredCards.length}</span>`;
+    progressContainer.style.setProperty('--progress', `${percent}%`);
     progressContainer.style.setProperty('--progress-width', `${percent}%`);
-    const before = progressContainer.querySelector('::before');
-    if (before) before.style.width = `${percent}%`;
+    progressContainer.querySelector('::before')?.style?.setProperty('width', `${percent}%`);
+}
+
+function populateCollections() {
+    const select = document.getElementById('collection-selector');
+    if (!select) return;
+
+    const collections = [...new Set(cards.map(card => card.collection))];
+    select.innerHTML = '<option value="all">Todas las barajas</option>' +
+        collections.map(c => `<option value="${c}">${c}</option>`).join('');
+
+    select.addEventListener('change', (e) => {
+        const selected = e.target.value;
+        if (selected === 'all') {
+            filteredCards = [...cards];
+        } else {
+            filteredCards = cards.filter(card => card.collection === selected);
+        }
+        currentIndex = 0;
+        if (filteredCards.length > 0) {
+            renderCard(filteredCards[currentIndex]);
+        } else {
+            document.getElementById('card-container').innerHTML = '<p>No hay tarjetas en esta baraja.</p>';
+        }
+        updateProgressUI();
+    });
 }
 
 export function getCards() {
-    return cards;
+    return filteredCards;
 }
 
 export function getCurrentIndex() {
@@ -79,13 +95,13 @@ export function getCurrentIndex() {
 }
 
 export function nextCard() {
-    currentIndex = (currentIndex + 1) % cards.length;
+    currentIndex = (currentIndex + 1) % filteredCards.length;
 }
 
 export function randomCard() {
     let randomIndex;
     do {
-        randomIndex = Math.floor(Math.random() * cards.length);
+        randomIndex = Math.floor(Math.random() * filteredCards.length);
     } while (randomIndex === currentIndex);
     currentIndex = randomIndex;
 }

@@ -160,6 +160,8 @@ body {
     background-color: var(--button-hover);
 }
 
+/* ===== BARRA DE PROGRESO ===== */
+
 .progress-bar {
     width: 100%;
     margin-top: 10px;
@@ -207,6 +209,39 @@ body {
         transform: translateY(0);
     }
 }
+
+/* ===== SELECTOR DE BARAJAS ===== */
+
+.collection-filter {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.collection-filter label {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.collection-filter select {
+    flex: 1;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--button);
+    color: white;
+    transition: background-color 0.3s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.collection-filter select:hover {
+    background-color: var(--button-hover);
+}
+
 
 /* 📱 Responsive */
 @media (max-width: 400px) {
