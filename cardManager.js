@@ -1,5 +1,6 @@
 let cards = [];
 let currentIndex = 0;
+let seenCards = new Set(JSON.parse(localStorage.getItem('seen-cards') || '[]'));
 
 export async function loadCards() {
     try {
@@ -25,6 +26,14 @@ export function renderCard(card) {
     flashcard.addEventListener('click', () => {
         flashcard.classList.toggle('flipped');
     });
+
+    markCardAsSeen(currentIndex);
+}
+
+function markCardAsSeen(index) {
+    seenCards.add(index);
+    localStorage.setItem('seen-cards', JSON.stringify([...seenCards]));
+    console.log(`Tarjetas vistas: ${seenCards.size} de ${cards.length}`);
 }
 
 export function getCards() {
