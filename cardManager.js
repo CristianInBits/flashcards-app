@@ -1,13 +1,21 @@
 let cards = [];
 let currentIndex = 0;
-let seenCards = new Set(JSON.parse(localStorage.getItem('seen-cards') || '[]'));
+let seenCards = new Set();
 
 export async function loadCards() {
     try {
         const response = await fetch('cards.json');
         cards = await response.json();
+
+        // Limpiar y conservar solo índices válidos
+        const stored = JSON.parse(localStorage.getItem('seen-cards') || '[]');
+        seenCards = new Set(stored.filter(index => index >= 0 && index < cards.length));
+        localStorage.setItem('seen-cards', JSON.stringify([...seenCards]));
+
         updateProgressUI();
+
         return cards;
+
     } catch (error) {
         console.error('Error cargando tarjetas:', error);
         return [];
@@ -41,7 +49,25 @@ function markCardAsSeen(index) {
 function updateProgressUI() {
     const progressContainer = document.getElementById('progress');
     if (!progressContainer) return;
-    progressContainer.textContent = `Progreso: ${seenCards.size} / ${cards.length}`;
+
+    const percent = cards.length > 0 ? (seenCards.size / cards.length) * 100 : 0;
+    progressContainer.innerHTML = `<span>Progreso: ${seenCards.size} / ${cards.length}</span>`;
+    progressContainer.style.setProperty('--progress', `${percent}%`);
+
+    const progressBar = progressContainer;
+    const bar = progressBar.querySelector('::before');
+    if (bar) {
+        bar.style.width = `${percent}%`;
+    } else {
+        progressBar.style.setProperty('--progress', `${percent}%`);
+        progressBar.style.setProperty('background-size', `${percent}% 100%`);
+        progressBar.style.setProperty('--progress-width', `${percent}%`);
+        progressBar.style.setProperty('--progress-text', `'Progreso: ${seenCards.size} / ${cards.length}'`);
+        progressBar.style.setProperty('position', 'relative');
+    }
+    progressContainer.style.setProperty('--progress-width', `${percent}%`);
+    const before = progressContainer.querySelector('::before');
+    if (before) before.style.width = `${percent}%`;
 }
 
 export function getCards() {
