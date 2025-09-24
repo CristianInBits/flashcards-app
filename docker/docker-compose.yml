@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:16
+    container_name: flashcards_db
+    environment:
+      POSTGRES_DB: flashcards
+      POSTGRES_USER: flash
+      POSTGRES_PASSWORD: flash
+    ports:
+      - "5432:5432"
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: flashcards_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@local
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+volumes:
+  dbdata:
