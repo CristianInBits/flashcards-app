@@ -37,7 +37,14 @@ dependencies {
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 	
+	// OpenAPI
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+	// Testcontainers
+    testImplementation("org.testcontainers:junit-jupiter:1.20.2")
+    testImplementation("org.testcontainers:postgresql:1.20.2")
 }
 
 tasks.test {

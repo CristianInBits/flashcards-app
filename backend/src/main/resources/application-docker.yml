@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/flashcards
+    url: jdbc:postgresql://db:5432/flashcards
     username: flash
     password: flash
   jpa:
@@ -20,4 +20,3 @@ server:
 logging:
   level:
     org.springframework: info
-    org.hibernate.SQL: info
