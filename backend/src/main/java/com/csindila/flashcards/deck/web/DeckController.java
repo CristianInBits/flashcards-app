@@ -77,4 +77,9 @@ public class DeckController {
     public void delete(@PathVariable UUID id) {
         service.delete(id);
     }
+
+    @PostMapping("/echo")
+    public DeckCreateRequest echo(@Valid @RequestBody DeckCreateRequest req) {
+        return req;
+    }
 }

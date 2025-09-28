@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -25,7 +26,7 @@ public class GlobalExceptionHandler {
         var details = ex.getBindingResult().getFieldErrors().stream()
                 .map(err -> err.getField() + ": " + err.getDefaultMessage())
                 .toList();
-        return build(HttpStatus.BAD_REQUEST, "Validación iválida", req.getRequestURI(), details);
+        return build(HttpStatus.BAD_REQUEST, "Validación inválida", req.getRequestURI(), details);
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
