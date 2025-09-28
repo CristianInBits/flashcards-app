@@ -1,17 +1,12 @@
 package com.csindila.flashcards.deck.domain;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.UUID;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Table(name = "decks")
@@ -34,8 +29,7 @@ public class Deck {
 
     @PrePersist
     void prePersist() {
-        if (createdAt == null) {
+        if (createdAt == null)
             createdAt = OffsetDateTime.now(ZoneOffset.UTC);
-        }
     }
 }

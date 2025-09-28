@@ -1,31 +1,15 @@
 package com.csindila.flashcards.deck.web;
 
-import java.util.Set;
-import java.util.UUID;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.csindila.flashcards.deck.dto.DeckCreateRequest;
-import com.csindila.flashcards.deck.dto.DeckDto;
-import com.csindila.flashcards.deck.dto.DeckUpdateRequest;
+import com.csindila.flashcards.deck.dto.*;
 import com.csindila.flashcards.deck.service.DeckService;
-
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.*;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/decks")
@@ -44,9 +28,8 @@ public class DeckController {
     public Page<DeckDto> list(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size,
-            @RequestParam(defaultValue = "createdAt, desc") String sort) {
-
-        // sort = "campo,asc|desc"
+            @RequestParam(defaultValue = "createdAt,desc") String sort) {
+        // sort="campo,asc|desc"
         String[] parts = sort.split(",", 2);
         String property = parts[0];
         String dir = parts.length > 1 ? parts[1] : "asc";
@@ -76,10 +59,5 @@ public class DeckController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable UUID id) {
         service.delete(id);
-    }
-
-    @PostMapping("/echo")
-    public DeckCreateRequest echo(@Valid @RequestBody DeckCreateRequest req) {
-        return req;
     }
 }

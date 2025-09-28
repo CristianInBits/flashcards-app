@@ -20,3 +20,5 @@ server:
 logging:
   level:
     org.springframework: info
+    com.fasterxml.jackson.databind: debug
+    org.springframework.http.converter: trace

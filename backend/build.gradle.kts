@@ -45,8 +45,17 @@ dependencies {
 	// Testcontainers
     testImplementation("org.testcontainers:junit-jupiter:1.20.2")
     testImplementation("org.testcontainers:postgresql:1.20.2")
+
+	// Soporte extra (seguro) para binding de constructor/records
+    implementation("com.fasterxml.jackson.module:jackson-module-parameter-names")
+    // Tipos de fecha/hora Java Time (por si no lo tenías)
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
 }
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.withType<JavaCompile> {
+    options.compilerArgs.add("-parameters")
 }
