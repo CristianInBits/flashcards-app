@@ -42,6 +42,9 @@ public class Card {
     @Column(columnDefinition = "text")
     private String tags;
 
+    @Column(nullable = false)
+    private boolean latex = false;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private OffsetDateTime createdAt;
 
