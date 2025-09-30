@@ -51,12 +51,13 @@ public class CardService {
 
     @Transactional(readOnly = true)
     public Page<CardDto> search(UUID deckId, String q, String tag, Pageable pageable) {
-        if (!decks.existsById(deckId)) {
+        if (!decks.existsById(deckId))
             throw new NoSuchElementException("Deck no encontrado");
-        }
-        var normalizedQ = (q == null || q.isBlank()) ? null : q;
-        var normalizedTag = (tag == null || tag.isBlank()) ? null : tag;
-        return cards.search(deckId, normalizedQ, normalizedTag, pageable).map(this::toDto);
+
+        String qPattern = (q == null || q.isBlank()) ? null : "%" + q.toLowerCase() + "%";
+        String tagPattern = (tag == null || tag.isBlank()) ? null : "%" + tag.toLowerCase() + "%";
+
+        return cards.search(deckId, qPattern, tagPattern, pageable).map(this::toDto);
     }
 
     @Transactional(readOnly = true)

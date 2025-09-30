@@ -16,15 +16,14 @@ public interface CardRepository extends JpaRepository<Card, UUID> {
   Page<Card> findByDeck_Id(UUID deckId, Pageable pageable);
 
   @Query("""
-    SELECT c FROM Card c
-    WHERE c.deck.id = :deckId
-      AND (:q IS NULL OR LOWER(c.front) LIKE LOWER(CONCAT('%', :q, '%')) OR LOWER(c.back) LIKE LOWER(CONCAT('%', :q, '%')))
-      AND (:tag IS NULL OR (c.tags IS NOT NULL AND LOWER(c.tags) LIKE LOWER(CONCAT('%', :tag, '%'))))
-    """)
+      SELECT c FROM Card c
+      WHERE c.deck.id = :deckId
+        AND (:qPattern IS NULL OR LOWER(c.front) LIKE :qPattern OR LOWER(c.back) LIKE :qPattern)
+        AND (:tagPattern IS NULL OR (c.tags IS NOT NULL AND LOWER(c.tags) LIKE :tagPattern))
+      """)
   Page<Card> search(
       @Param("deckId") UUID deckId,
-      @Param("q") String q,
-      @Param("tag") String tag,
-      Pageable pageable
-  );
+      @Param("qPattern") String qPattern,
+      @Param("tagPattern") String tagPattern,
+      Pageable pageable);
 }
