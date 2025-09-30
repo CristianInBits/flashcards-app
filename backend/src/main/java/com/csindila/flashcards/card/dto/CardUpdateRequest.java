@@ -7,5 +7,4 @@ public record CardUpdateRequest(
         @NotBlank String back,
         String tags,
         Boolean latex) {
-
 }

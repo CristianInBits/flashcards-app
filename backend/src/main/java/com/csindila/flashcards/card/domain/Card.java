@@ -16,6 +16,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -54,9 +55,8 @@ public class Card {
     @PrePersist
     void prePersist() {
         var now = OffsetDateTime.now(ZoneOffset.UTC);
-        if (createdAt == null) {
+        if (createdAt == null)
             createdAt = now;
-        }
         updatedAt = now;
     }
 

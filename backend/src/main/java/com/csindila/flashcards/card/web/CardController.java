@@ -4,11 +4,13 @@ import java.util.Set;
 import java.util.UUID;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,19 +49,25 @@ public class CardController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size,
             @RequestParam(defaultValue = "createdAt,desc") String sort) {
-        // sort="campo,asc|desc"
-        String[] parts = sort.split(",", 2);
-        String property = parts[0];
-        String dir = parts.length > 1 ? parts[1] : "asc";
+        if (page < 0)
+            page = 0;
+        if (size < 1)
+            size = 1;
+        if (size > 100)
+            size = 100;
 
-        // whitelist de propiedades ordenables
-        Set<String> allowed = Set.of("createdAt", "name");
+        String[] parts = sort.split(",", 2);
+        String property = parts[0].trim();
+        String dir = parts.length > 1 ? parts[1].trim() : "asc";
+
+        // Solo permitimos ordenar por estos campos de Card
+        var allowed = Set.of("createdAt", "updatedAt", "front");
         if (!allowed.contains(property)) {
             throw new IllegalArgumentException("Campo de orden inválido: " + property);
         }
 
         Sort.Direction direction = "desc".equalsIgnoreCase(dir) ? Sort.Direction.DESC : Sort.Direction.ASC;
-        var pageable = PageRequest.of(page, size, Sort.by(new Sort.Order(direction, property)));
+        Pageable pageable = PageRequest.of(page, size, Sort.by(new Sort.Order(direction, property)));
         return service.listByDeck(deckId, pageable);
     }
 
@@ -71,7 +79,25 @@ public class CardController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size,
             @RequestParam(defaultValue = "createdAt,desc") String sort) {
-        var pageable = PageRequest.of(page, size, Sort.by(sort.split(",")));
+        if (page < 0)
+            page = 0;
+        if (size < 1)
+            size = 1;
+        if (size > 100)
+            size = 100;
+
+        String[] parts = sort.split(",", 2);
+        String property = parts[0].trim();
+        String dir = parts.length > 1 ? parts[1].trim() : "asc";
+
+        var allowed = Set.of("createdAt", "updatedAt", "front");
+        if (!allowed.contains(property)) {
+            throw new IllegalArgumentException("Campo de orden inválido: " + property);
+        }
+
+        Sort.Direction direction = "desc".equalsIgnoreCase(dir) ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Pageable pageable = PageRequest.of(page, size, Sort.by(new Sort.Order(direction, property)));
+
         return service.search(deckId, q, tag, pageable);
     }
 

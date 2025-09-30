@@ -12,5 +12,4 @@ public record CardDto(
         boolean latex,
         OffsetDateTime createdAt,
         OffsetDateTime updatedAt) {
-
 }
