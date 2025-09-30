@@ -1,5 +1,8 @@
 package com.csindila.flashcards.review.domain;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.UUID;
@@ -40,8 +43,8 @@ public class Review {
     @Column(name = "interval_days", nullable = false)
     private int intervalDays = 0;
 
-    @Column(name = "ease", nullable = false)
-    private double ease = 2.50;
+    @Column(name = "ease", nullable = false, precision = 4, scale = 2)
+    private BigDecimal ease;
 
     @Column(name = "reps", nullable = false)
     private int reps = 0;
@@ -56,5 +59,7 @@ public class Review {
     void prePersist() {
         if (dueAt == null)
             dueAt = OffsetDateTime.now(ZoneOffset.UTC);
+        if (ease == null)
+            ease = new BigDecimal("2.50"); // valor por defecto del SRS
     }
 }

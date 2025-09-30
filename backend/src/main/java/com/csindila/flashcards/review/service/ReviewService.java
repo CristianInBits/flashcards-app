@@ -1,5 +1,8 @@
 package com.csindila.flashcards.review.service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
@@ -25,7 +28,7 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 public class ReviewService {
 
-    private static final double MIN_EASE = 1.30;
+    private static final BigDecimal MIN_EASE = BigDecimal.valueOf(1.30);
 
     private final ReviewRepository reviews;
     private final ReviewLogRepository logs;
@@ -61,34 +64,30 @@ public class ReviewService {
             var r = new Review();
             r.setCard(card);
             r.setDueAt(now); // primera vez, due = ahora
+            // ease se rellenará en @PrePersist si sigue null
             return r;
         });
 
         // Copias para log
         var prevDue = review.getDueAt();
         var prevInterval = review.getIntervalDays();
-        var prevEase = review.getEase();
+        var prevEaseBD = review.getEase(); // puede ser null si es la 1ª vez
+        if (prevEaseBD == null)
+            prevEaseBD = new BigDecimal("2.50");
 
         // ---- SM-2 simplificado ----
-        // Si grade < 3 => fallo (lapse): reps = 0, interval = 1, ease -= 0.20
-        // Si grade >= 3:
-        // reps++
-        // si reps == 1 -> interval = 1
-        // si reps == 2 -> interval = 6
-        // si reps > 2 -> interval = round(prevInterval * ease)
-        // ease = ease + (0.1 - (5 - grade) * (0.08 + (5 - grade) * 0.02)), min 1.30
         int reps = review.getReps();
-        double ease = review.getEase();
+        double ease = prevEaseBD.doubleValue();
         int nextInterval;
 
         if (grade < 3) {
             // lapse
             review.setLapses(review.getLapses() + 1);
             reps = 0;
-            ease = Math.max(MIN_EASE, ease - 0.20);
+            ease = Math.max(MIN_EASE.doubleValue(), ease - 0.20);
             nextInterval = 1;
         } else {
-            // correct
+            // correcto
             reps = reps + 1;
             if (reps == 1) {
                 nextInterval = 1;
@@ -97,18 +96,20 @@ public class ReviewService {
             } else {
                 nextInterval = Math.max(1, (int) Math.round(review.getIntervalDays() * ease));
             }
-            // actualizar ease con la fórmula SM-2
+            // fórmula SM-2
             ease = ease + (0.1 - (5 - grade) * (0.08 + (5 - grade) * 0.02));
-            ease = Math.max(MIN_EASE, ease);
+            ease = Math.max(MIN_EASE.doubleValue(), ease);
         }
 
+        // Guardar con BigDecimal(4,2)
+        var easeBD = BigDecimal.valueOf(ease).setScale(2, RoundingMode.HALF_UP);
+
         review.setReps(reps);
-        review.setEase(ease);
+        review.setEase(easeBD);
         review.setIntervalDays(nextInterval);
         review.setLastReviewedAt(now);
         review.setDueAt(now.plusDays(nextInterval));
 
-        // Guardar cambios
         reviews.save(review);
 
         // Log
@@ -119,8 +120,8 @@ public class ReviewService {
         log.setNewDueAt(review.getDueAt());
         log.setPrevInterval(prevInterval == 0 ? null : prevInterval);
         log.setNewInterval(review.getIntervalDays());
-        log.setPrevEase(prevEase == 0 ? null : prevEase);
-        log.setNewEase(review.getEase());
+        log.setPrevEase(prevEaseBD); // BigDecimal
+        log.setNewEase(review.getEase()); // BigDecimal
         logs.save(log);
 
         return toDto(review);
@@ -137,7 +138,7 @@ public class ReviewService {
                 r.getCard().getId(),
                 r.getDueAt(),
                 r.getIntervalDays(),
-                r.getEase(),
+                r.getEase() == null ? 0.0 : r.getEase().doubleValue(),
                 r.getReps(),
                 r.getLapses(),
                 r.getLastReviewedAt());

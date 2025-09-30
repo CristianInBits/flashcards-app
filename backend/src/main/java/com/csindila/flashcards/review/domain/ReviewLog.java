@@ -17,6 +17,8 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "review_log")
 @Getter
@@ -48,11 +50,11 @@ public class ReviewLog {
     @Column(name = "new_interval")
     private Integer newInterval;
 
-    @Column(name = "prev_ease")
-    private Double prevEase;
+    @Column(name = "prev_ease", precision = 4, scale = 2)
+    private BigDecimal prevEase;
 
-    @Column(name = "new_ease")
-    private Double newEase;
+    @Column(name = "new_ease", precision = 4, scale = 2)
+    private BigDecimal newEase;
 
     @PrePersist
     void prePersist() {
