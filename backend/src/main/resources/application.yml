@@ -21,3 +21,13 @@ logging:
   level:
     org.springframework: info
     org.hibernate.SQL: info
+
+app:
+  auth:
+    username: demo@local
+    # ¡Para pruebas! Cámbialo luego a un valor fuerte o usa variables de entorno
+    password: demo123
+  jwt:
+    issuer: flashcards-app
+    secret: "change-this-super-secret-key-please-0123456789"
+    expirationMinutes: 120
