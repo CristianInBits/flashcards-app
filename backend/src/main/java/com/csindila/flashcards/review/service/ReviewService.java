@@ -143,4 +143,39 @@ public class ReviewService {
                 r.getLapses(),
                 r.getLastReviewedAt());
     }
+
+    @Transactional(readOnly = true)
+    public ReviewQueueItemDto getNext(UUID deckId, boolean shuffle) {
+        var now = OffsetDateTime.now(ZoneOffset.UTC);
+
+        Review r;
+        if (shuffle) {
+            // Aleatorio (nativa)
+            r = reviews.findOneDueRandom(now, deckId);
+            if (r == null)
+                return null;
+        } else {
+            // Orden natural por dueAt (asc)
+            var page = reviews.findDueFiltered(now, deckId, PageRequest.of(0, 1));
+            if (page.isEmpty())
+                return null;
+            r = page.getContent().get(0);
+        }
+
+        var c = r.getCard();
+        return new ReviewQueueItemDto(
+                c.getId(), c.getDeck().getId(), c.getFront(), c.getBack(), c.getTags(), c.isLatex());
+    }
+
+    public ReviewDto skip(UUID cardId, int minutes) {
+        if (minutes <= 0)
+            minutes = 10; // default
+        var review = reviews.findById(cardId)
+                .orElseThrow(() -> new NoSuchElementException("Review no encontrada"));
+        var now = OffsetDateTime.now(ZoneOffset.UTC);
+        // Posponemos sin alterar reps/ease/interval
+        review.setDueAt(now.plusMinutes(minutes));
+        reviews.save(review);
+        return toDto(review);
+    }
 }

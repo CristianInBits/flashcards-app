@@ -36,6 +36,16 @@ public class ReviewController {
         return service.getDueQueue(limit);
     }
 
+    @GetMapping("/next")
+    public ResponseEntity<ReviewQueueItemDto> next(
+            @RequestParam(required = false) UUID deckId,
+            @RequestParam(defaultValue = "false") boolean shuffle) {
+        var item = service.getNext(deckId, shuffle);
+        if (item == null)
+            return ResponseEntity.noContent().build(); // 204 si no hay vencidas
+        return ResponseEntity.ok(item);
+    }
+
     /**
      * Responder una tarjeta: recalcula SRS.
      */
@@ -45,6 +55,13 @@ public class ReviewController {
             @Valid @RequestBody ReviewAnswerRequest req) {
         var updated = service.answer(cardId, req.grade());
         return ResponseEntity.ok(updated);
+    }
+
+    @PostMapping("/{cardId}/skip")
+    public ReviewDto skip(
+            @PathVariable UUID cardId,
+            @RequestParam(defaultValue = "10") int minutes) {
+        return service.skip(cardId, minutes);
     }
 
     /**
