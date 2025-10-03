@@ -1,0 +1,5 @@
+spring:
+  flyway:
+    enabled: true
+    # Ejecuta migraciones + semillas de desarrollo
+    locations: classpath:db/migration,classpath:db/seed/dev
