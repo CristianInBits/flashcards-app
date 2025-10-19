@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import Decks from "./pages/Decks";
 
 export function ProtectedRoute({ children }: { children: JSX.Element }) {
     const token = localStorage.getItem("token");
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
         ),
         children: [
             { index: true, element: <Dashboard /> },
-            // más rutas protegidas más adelante
+            { path: "decks", element: <Decks /> },
         ],
     },
 ]);
