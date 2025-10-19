@@ -1,10 +1,13 @@
 package com.csindila.flashcards.security;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
@@ -25,6 +28,8 @@ public class JwtService {
             @Value("${app.jwt.secret}") String secret,
             @Value("${app.jwt.expirationMinutes}") int expirationMinutes) {
         this.issuer = issuer;
+        // Recomendación: secreto >= 32 bytes (256 bits). Si lo pasas Base64, decodifica
+        // primero.
         this.key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
         this.expirationMinutes = expirationMinutes;
     }
@@ -44,9 +49,14 @@ public class JwtService {
 
     public Jws<Claims> parse(String token) {
         return Jwts.parserBuilder()
-                .setSigningKey(key)
                 .requireIssuer(issuer)
+                .setAllowedClockSkewSeconds(60) // tolerancia de reloj
+                .setSigningKey(key)
                 .build()
                 .parseClaimsJws(token);
+    }
+
+    public long getExpirationSeconds() {
+        return expirationMinutes * 60L;
     }
 }

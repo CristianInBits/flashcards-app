@@ -1,16 +1,23 @@
 spring:
+  config:
+    activate:
+      on-profile: docker
+
   datasource:
     url: jdbc:postgresql://db:5432/flashcards
     username: flash
     password: flash
+
   jpa:
     hibernate:
       ddl-auto: validate
     properties:
       hibernate.format_sql: true
       hibernate.jdbc.time_zone: UTC
+
   flyway:
     enabled: true
+
   jackson:
     time-zone: UTC
 
@@ -20,5 +27,13 @@ server:
 logging:
   level:
     org.springframework: info
-    com.fasterxml.jackson.databind: debug
-    org.springframework.http.converter: trace
+    org.hibernate.SQL: debug
+    # En docker suelo evitar trazas muy ruidosas.
+    # Si las necesitas, actívalas en application-dev.yml
+
+app:
+  jwt:
+    issuer: flashcards-app
+    # En Docker suele ser más cómodo inyectar APP_JWT_SECRET desde el compose
+    secret: ${APP_JWT_SECRET:${JWT_SECRET:change-this-super-secret-key-please-0123456789-change-me}}
+    expirationMinutes: 120

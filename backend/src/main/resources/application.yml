@@ -3,14 +3,17 @@ spring:
     url: jdbc:postgresql://localhost:5432/flashcards
     username: flash
     password: flash
+
   jpa:
     hibernate:
       ddl-auto: validate
     properties:
       hibernate.format_sql: true
       hibernate.jdbc.time_zone: UTC
+
   flyway:
     enabled: true
+
   jackson:
     time-zone: UTC
 
@@ -20,10 +23,11 @@ server:
 logging:
   level:
     org.springframework: info
-    org.hibernate.SQL: info
+    org.hibernate.SQL: debug
 
 app:
   jwt:
     issuer: flashcards-app
-    secret: "change-this-super-secret-key-please-0123456789"
+    # Primero intenta APP_JWT_SECRET (útil en Docker), si no JWT_SECRET, si no el valor por defecto:
+    secret: ${APP_JWT_SECRET:${JWT_SECRET:change-this-super-secret-key-please-0123456789-change-me}}
     expirationMinutes: 120

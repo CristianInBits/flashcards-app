@@ -43,4 +43,9 @@ public class GlobalExceptionHandler {
         var body = new ApiError(msg, status.value(), path, OffsetDateTime.now(), details);
         return ResponseEntity.status(status).body(body);
     }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ApiError> badRequestIllegalArg(IllegalArgumentException ex, HttpServletRequest req) {
+        return build(HttpStatus.BAD_REQUEST, ex.getMessage(), req.getRequestURI(), List.of());
+    }
 }

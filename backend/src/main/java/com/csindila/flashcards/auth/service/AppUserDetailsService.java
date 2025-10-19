@@ -16,7 +16,8 @@ public class AppUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        var u = users.findByEmail(username)
+        String email = username == null ? null : username.trim().toLowerCase(); // 👈
+        var u = users.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
         return new User(u.getEmail(), u.getPasswordHash(),
                 List.of(new SimpleGrantedAuthority("ROLE_" + u.getRole())));

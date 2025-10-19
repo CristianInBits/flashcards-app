@@ -28,5 +28,22 @@ services:
       db:
         condition: service_healthy
 
+  app:
+    # Construimos la imagen desde el backend
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    container_name: flashcards_app
+    environment:
+      # Perfil docker: JDBC -> db:5432 (definido en application-docker.yml)
+      SPRING_PROFILES_ACTIVE: docker
+      # Secreto JWT (lo coge del .env de esta carpeta)
+      APP_JWT_SECRET: ${APP_JWT_SECRET:-change-this-in-.env}
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+
 volumes:
   dbdata:

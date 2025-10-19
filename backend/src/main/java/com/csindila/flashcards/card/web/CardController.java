@@ -10,7 +10,7 @@ import org.springframework.data.domain.Sort;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,12 +28,18 @@ import com.csindila.flashcards.card.dto.CardUpdateRequest;
 import com.csindila.flashcards.card.service.CardService;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
+@Validated
 public class CardController {
+
+    private static final Set<String> ALLOWED_SORTS = Set.of("createdAt", "updatedAt", "front");
 
     private final CardService service;
 
@@ -46,28 +52,11 @@ public class CardController {
     @GetMapping("/decks/{deckId}/cards")
     public Page<CardDto> listByDeck(
             @PathVariable UUID deckId,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "20") int size,
+            @RequestParam(defaultValue = "0") @PositiveOrZero int page,
+            @RequestParam(defaultValue = "20") @Min(1) @Max(100) int size,
             @RequestParam(defaultValue = "createdAt,desc") String sort) {
-        if (page < 0)
-            page = 0;
-        if (size < 1)
-            size = 1;
-        if (size > 100)
-            size = 100;
 
-        String[] parts = sort.split(",", 2);
-        String property = parts[0].trim();
-        String dir = parts.length > 1 ? parts[1].trim() : "asc";
-
-        // Solo permitimos ordenar por estos campos de Card
-        var allowed = Set.of("createdAt", "updatedAt", "front");
-        if (!allowed.contains(property)) {
-            throw new IllegalArgumentException("Campo de orden inválido: " + property);
-        }
-
-        Sort.Direction direction = "desc".equalsIgnoreCase(dir) ? Sort.Direction.DESC : Sort.Direction.ASC;
-        Pageable pageable = PageRequest.of(page, size, Sort.by(new Sort.Order(direction, property)));
+        Pageable pageable = buildPageable(page, size, sort);
         return service.listByDeck(deckId, pageable);
     }
 
@@ -76,28 +65,11 @@ public class CardController {
             @PathVariable UUID deckId,
             @RequestParam(required = false) String q,
             @RequestParam(required = false) String tag,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "20") int size,
+            @RequestParam(defaultValue = "0") @PositiveOrZero int page,
+            @RequestParam(defaultValue = "20") @Min(1) @Max(100) int size,
             @RequestParam(defaultValue = "createdAt,desc") String sort) {
-        if (page < 0)
-            page = 0;
-        if (size < 1)
-            size = 1;
-        if (size > 100)
-            size = 100;
 
-        String[] parts = sort.split(",", 2);
-        String property = parts[0].trim();
-        String dir = parts.length > 1 ? parts[1].trim() : "asc";
-
-        var allowed = Set.of("createdAt", "updatedAt", "front");
-        if (!allowed.contains(property)) {
-            throw new IllegalArgumentException("Campo de orden inválido: " + property);
-        }
-
-        Sort.Direction direction = "desc".equalsIgnoreCase(dir) ? Sort.Direction.DESC : Sort.Direction.ASC;
-        Pageable pageable = PageRequest.of(page, size, Sort.by(new Sort.Order(direction, property)));
-
+        Pageable pageable = buildPageable(page, size, sort);
         return service.search(deckId, q, tag, pageable);
     }
 
@@ -115,5 +87,19 @@ public class CardController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable UUID id) {
         service.delete(id);
+    }
+
+    private Pageable buildPageable(int page, int size, String sort) {
+
+        String[] parts = sort.split(",", 2);
+        String property = parts[0].trim();
+        String dir = parts.length > 1 ? parts[1].trim() : "asc";
+
+        if (!ALLOWED_SORTS.contains(property)) {
+            throw new IllegalArgumentException("Campo de orden inválido: " + property);
+        }
+
+        Sort.Direction direction = "desc".equalsIgnoreCase(dir) ? Sort.Direction.DESC : Sort.Direction.ASC;
+        return PageRequest.of(page, size, Sort.by(new Sort.Order(direction, property)));
     }
 }

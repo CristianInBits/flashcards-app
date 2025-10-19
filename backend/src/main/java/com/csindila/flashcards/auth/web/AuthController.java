@@ -6,12 +6,15 @@ import com.csindila.flashcards.security.JwtService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -27,18 +30,23 @@ public class AuthController {
     // === Registro ===
     @PostMapping("/register")
     public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest req) {
-        if (users.existsByEmail(req.email())) {
-            return ResponseEntity.status(409).body(Map.of("message", "Email ya registrado"));
+        String email = normalizeEmail(req.email());
+
+        if (users.existsByEmail(email)) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body(Map.of("message", "Email ya registrado"));
         }
-        // reglas mínimas de password (8+ chars, etc.)
-        if (req.password().length() < 8) {
-            return ResponseEntity.badRequest().body(Map.of("message", "Password mínimo 8 caracteres"));
+        if (!isStrongPassword(req.password())) {
+            return ResponseEntity.badRequest()
+                    .body(Map.of("message", "Password insegura (mín. 8, mayús., minús., dígito, símbolo)"));
         }
+
         var u = new AppUser();
-        u.setEmail(req.email().toLowerCase().trim());
+        u.setEmail(email);
         u.setPasswordHash(encoder.encode(req.password()));
-        u.setRole("USER");
+        u.setRole("USER"); // o el que corresponda
         users.save(u);
+
         return ResponseEntity.ok(Map.of("message", "Usuario registrado"));
     }
 
@@ -47,22 +55,42 @@ public class AuthController {
             @NotBlank String password) {
     }
 
-    // === Login ===
+    // === Login por email ===
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody LoginRequest req) {
+        String email = normalizeEmail(req.email());
         try {
             Authentication auth = authManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(req.username(), req.password()));
-            var token = jwt.generate(req.username(), Map.of("role", "USER"));
-            return ResponseEntity.ok(new LoginResponse("Bearer " + token));
+                    new UsernamePasswordAuthenticationToken(email, req.password()));
+
+            AppUser u = users.findByEmail(email).orElseThrow();
+            // Claim "roles" como lista (flexible para futuro)
+            var roles = List.of(u.getRole()); // p.ej. ["USER"] o ["ADMIN"]
+            var token = jwt.generate(email, Map.of("roles", roles));
+
+            return ResponseEntity.ok(new LoginResponse(token, "Bearer", jwt.getExpirationSeconds()));
+
         } catch (BadCredentialsException ex) {
-            return ResponseEntity.status(401).body(Map.of("message", "Credenciales inválidas"));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(Map.of("message", "Credenciales inválidas"));
         }
     }
 
-    public record LoginRequest(@NotBlank String username, @NotBlank String password) {
+    public record LoginRequest(@NotBlank String email, @NotBlank String password) {
     }
 
-    public record LoginResponse(String token) {
+    public record LoginResponse(String token, String tokenType, long expiresInSec) {
+    }
+
+    // === Helpers ===
+    private static String normalizeEmail(String raw) {
+        return raw == null ? null : raw.trim().toLowerCase();
+    }
+
+    private static boolean isStrongPassword(String pwd) {
+        if (pwd == null)
+            return false;
+        // mín. 8, al menos: 1 mayús, 1 minús, 1 dígito, 1 símbolo
+        return pwd.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[^\\w\\s]).{8,}$");
     }
 }
