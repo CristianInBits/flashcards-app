@@ -3,6 +3,7 @@ import AppLayout from "./layouts/AppLayout";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Decks from "./pages/Decks";
+import DeckDetail from "./pages/DeckDetail";
 
 export function ProtectedRoute({ children }: { children: JSX.Element }) {
     const token = localStorage.getItem("token");
@@ -21,6 +22,7 @@ export const router = createBrowserRouter([
         children: [
             { index: true, element: <Dashboard /> },
             { path: "decks", element: <Decks /> },
+            { path: "decks/:deckId", element: <DeckDetail /> },
         ],
     },
 ]);
