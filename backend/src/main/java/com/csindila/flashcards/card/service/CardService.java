@@ -16,6 +16,8 @@ import com.csindila.flashcards.card.dto.CardDto;
 import com.csindila.flashcards.card.dto.CardUpdateRequest;
 import com.csindila.flashcards.card.repo.CardRepository;
 import com.csindila.flashcards.deck.repo.DeckRepository;
+import com.csindila.flashcards.review.domain.Review;
+import com.csindila.flashcards.review.repo.ReviewRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -26,6 +28,7 @@ public class CardService {
 
     private final CardRepository cards;
     private final DeckRepository decks;
+    private final ReviewRepository reviews;
 
     public CardDto create(CardCreateRequest req) {
         var deck = decks.findById(req.deckId()).orElseThrow(() -> new NoSuchElementException("Deck no encontrado"));
@@ -38,6 +41,17 @@ public class CardService {
             c.setLatex(req.latex());
         }
         c = cards.save(c);
+
+        // crea su Review inicial (pendiente ya)
+        var r = new Review();
+        r.setCard(c);                  // @MapsId copiará el id de card
+        // r.setDueAt(null);           // (opcional) dejar null para que @PrePersist ponga now(UTC)
+        // r.setEase(null);            // (opcional) @PrePersist = 2.50
+        r.setIntervalDays(0);
+        r.setReps(0);
+        r.setLapses(0);
+        reviews.save(r);
+
         return toDto(c);
     }
 

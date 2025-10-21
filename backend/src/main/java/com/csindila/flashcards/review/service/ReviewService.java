@@ -143,6 +143,7 @@ public class ReviewService {
                 r.getLapses(),
                 r.getLastReviewedAt());
     }
+    
 
     @Transactional(readOnly = true)
     public ReviewQueueItemDto getNext(UUID deckId, boolean shuffle) {

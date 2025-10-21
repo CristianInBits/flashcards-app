@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Decks from "./pages/Decks";
 import DeckDetail from "./pages/DeckDetail";
+import Study from "./pages/Study";
 
 export function ProtectedRoute({ children }: { children: JSX.Element }) {
     const token = localStorage.getItem("token");
@@ -23,6 +24,7 @@ export const router = createBrowserRouter([
             { index: true, element: <Dashboard /> },
             { path: "decks", element: <Decks /> },
             { path: "decks/:deckId", element: <DeckDetail /> },
+            { path: "study", element: <Study /> },
         ],
     },
 ]);

@@ -14,32 +14,30 @@ import com.csindila.flashcards.review.domain.Review;
 
 public interface ReviewRepository extends JpaRepository<Review, UUID> {
 
-    Page<Review> findByDueAtLessThanEqualOrderByDueAtAsc(OffsetDateTime now, Pageable pageable);
+  Page<Review> findByDueAtLessThanEqualOrderByDueAtAsc(OffsetDateTime now, Pageable pageable);
 
-    Optional<Review> findById(UUID cardId); // alias semántico
+  @Query("""
+        SELECT r FROM Review r
+        JOIN r.card c
+        WHERE r.dueAt <= :now
+          AND (:deckId IS NULL OR c.deck.id = :deckId)
+        ORDER BY r.dueAt ASC
+      """)
+  Page<Review> findDueFiltered(
+      @Param("now") OffsetDateTime now,
+      @Param("deckId") UUID deckId,
+      Pageable pageable);
 
-    @Query("""
-              SELECT r FROM Review r
-              JOIN r.card c
-              WHERE r.dueAt <= :now
-                AND (:deckId IS NULL OR c.deck.id = :deckId)
-              ORDER BY r.dueAt ASC
-            """)
-    Page<Review> findDueFiltered(
-            @Param("now") OffsetDateTime now,
-            @Param("deckId") UUID deckId,
-            Pageable pageable);
-
-    // Para barajar (aleatorio) – usamos función RANDOM() de Postgres con nativa
-    @Query(value = """
-              SELECT r.* FROM reviews r
-              JOIN cards c ON c.id = r.card_id
-              WHERE r.due_at <= :now
-                AND (:deckId::uuid IS NULL OR c.deck_id = :deckId)
-              ORDER BY random()
-              LIMIT 1
-            """, nativeQuery = true)
-    Review findOneDueRandom(
-            @Param("now") OffsetDateTime now,
-            @Param("deckId") UUID deckId);
+  // Para barajar (aleatorio) – usamos función RANDOM() de Postgres con nativa
+  @Query(value = """
+        SELECT r.* FROM reviews r
+        JOIN cards c ON c.id = r.card_id
+        WHERE r.due_at <= :now
+          AND (:deckId IS NULL OR c.deck_id = CAST(:deckId AS uuid))
+        ORDER BY random()
+        LIMIT 1
+      """, nativeQuery = true)
+  Review findOneDueRandom(
+      @Param("now") OffsetDateTime now,
+      @Param("deckId") UUID deckId);
 }
