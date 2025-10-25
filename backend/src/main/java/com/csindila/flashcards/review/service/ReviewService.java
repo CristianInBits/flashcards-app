@@ -133,18 +133,6 @@ public class ReviewService {
         return toDto(r);
     }
 
-    private ReviewDto toDto(Review r) {
-        return new ReviewDto(
-                r.getCard().getId(),
-                r.getDueAt(),
-                r.getIntervalDays(),
-                r.getEase() == null ? 0.0 : r.getEase().doubleValue(),
-                r.getReps(),
-                r.getLapses(),
-                r.getLastReviewedAt());
-    }
-    
-
     @Transactional(readOnly = true)
     public ReviewQueueItemDto getNext(UUID deckId, boolean shuffle) {
         var now = OffsetDateTime.now(ZoneOffset.UTC);
@@ -178,5 +166,16 @@ public class ReviewService {
         review.setDueAt(now.plusMinutes(minutes));
         reviews.save(review);
         return toDto(review);
+    }
+
+    private ReviewDto toDto(Review r) {
+        return new ReviewDto(
+                r.getCard().getId(),
+                r.getDueAt(),
+                r.getIntervalDays(),
+                r.getEase() == null ? 0.0 : r.getEase().doubleValue(),
+                r.getReps(),
+                r.getLapses(),
+                r.getLastReviewedAt());
     }
 }
