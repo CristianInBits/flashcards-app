@@ -2,7 +2,7 @@ package dev.cristianinbits.flashcards.deck.repo;
 
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
-import dev.cristianinbits.flashcards.deck.model.Deck;
+import dev.cristianinbits.flashcards.deck.domain.Deck;
 
 /**
  * Repositorio JPA para la entidad Deck.

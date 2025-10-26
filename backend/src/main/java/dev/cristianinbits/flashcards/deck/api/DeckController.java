@@ -1,4 +1,4 @@
-package dev.cristianinbits.flashcards.deck.web;
+package dev.cristianinbits.flashcards.deck.api;
 
 import dev.cristianinbits.flashcards.deck.dto.*;
 import dev.cristianinbits.flashcards.common.web.PageQuery;

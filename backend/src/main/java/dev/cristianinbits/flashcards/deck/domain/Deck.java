@@ -1,4 +1,4 @@
-package dev.cristianinbits.flashcards.deck.model;
+package dev.cristianinbits.flashcards.deck.domain;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
  * Representa una baraja (deck) dentro del sistema de Flashcards.
  * 
  * Esta entidad almacena la información básica de una baraja creada por el
- * usuario, * incluyendo su identificador único, nombre, descripción y la fecha
+ * usuario, incluyendo su identificador único, nombre, descripción y la fecha
  * de creación.
  * 
  * Cada baraja puede contener múltiples tarjetas (cards), aunque la relación no
@@ -50,9 +50,8 @@ public class Deck {
 
     /**
      * Descripción opcional de la baraja.
-     * Se almacena en una columna de tipo texto largo.
      */
-    @Column(columnDefinition = "text")
+    @Column
     private String description;
 
     /**

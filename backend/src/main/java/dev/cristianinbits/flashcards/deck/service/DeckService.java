@@ -1,10 +1,10 @@
 package dev.cristianinbits.flashcards.deck.service;
 
+import dev.cristianinbits.flashcards.deck.domain.Deck;
 import dev.cristianinbits.flashcards.deck.dto.DeckCreateRequest;
 import dev.cristianinbits.flashcards.deck.dto.DeckDto;
 import dev.cristianinbits.flashcards.deck.dto.DeckUpdateRequest;
 import dev.cristianinbits.flashcards.deck.repo.DeckRepository;
-import dev.cristianinbits.flashcards.deck.model.Deck;
 
 import java.util.NoSuchElementException;
 import java.util.UUID;
