@@ -1,0 +1,4 @@
+-- Baseline migration
+-- (aquí más adelante añadiremos tablas Deck, Card, Review, etc.)
+-- Puedes crear extensiones si usas UUID, por ejemplo:
+-- CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
