@@ -1,4 +1,4 @@
-package dev.cristianinbits.flashcards.api;
+package dev.cristianinbits.flashcards.common.api;
 
 import java.util.Map;
 
