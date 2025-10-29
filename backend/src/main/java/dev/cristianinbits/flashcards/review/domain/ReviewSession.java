@@ -16,7 +16,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
-
+import jakarta.persistence.Version;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,8 +33,12 @@ import lombok.NoArgsConstructor;
  * duración total de la sesión.
  *
  * Esta entidad es opcional en el flujo de estudio: puede existir para análisis
- * de uso y métricas de usuario, pero no interviene en la planificación del
- * algoritmo de repetición espaciada.
+ * de uso y métricas de usuario, pero no interviene directamente en la
+ * planificación del algoritmo de repetición espaciada.
+ *
+ * Incluye un campo de versión que permite aplicar control de concurrencia
+ * optimista, garantizando la integridad de los datos cuando múltiples procesos
+ * intentan actualizar la misma sesión simultáneamente.
  */
 @Entity
 @Table(name = "reviews")
@@ -65,6 +69,15 @@ public class ReviewSession {
     private Deck deck;
 
     /**
+     * Número de versión para control de concurrencia optimista.
+     * Incrementa automáticamente en cada actualización, evitando sobrescrituras
+     * cuando existen modificaciones concurrentes sobre la misma sesión.
+     */
+    @Version
+    @Column(name = "version", nullable = false)
+    private long version;
+
+    /**
      * Fecha y hora en la que se inició la sesión. Se establece automáticamente si
      * no se define.
      */
@@ -72,8 +85,7 @@ public class ReviewSession {
     private OffsetDateTime startedAt;
 
     /**
-     * Fecha y hora en la que finalizó la sesión (puede ser nula si la sesión sigue
-     * en curso).
+     * Fecha y hora en la que finalizó la sesión (puede ser nula si sigue en curso).
      */
     @Column(name = "ended_at")
     private OffsetDateTime endedAt;
@@ -82,11 +94,11 @@ public class ReviewSession {
     @Column(name = "total_cards", nullable = false)
     private int totalCards = 0;
 
-    /** Número de respuestas correctas registradas en la sesión. */
+    /** Número total de respuestas correctas registradas en la sesión. */
     @Column(name = "correct", nullable = false)
     private int correct = 0;
 
-    /** Número de respuestas incorrectas registradas en la sesión. */
+    /** Número total de respuestas incorrectas registradas en la sesión. */
     @Column(name = "incorrect", nullable = false)
     private int incorrect = 0;
 
@@ -95,8 +107,8 @@ public class ReviewSession {
     private int durationSec = 0;
 
     /**
-     * Establece automáticamente la marca temporal de inicio antes de insertar
-     * el registro en la base de datos si no se ha definido explícitamente.
+     * Asigna automáticamente la fecha de inicio antes de insertar el registro
+     * en la base de datos, en caso de no haberse definido previamente.
      */
     @PrePersist
     void prePersist() {

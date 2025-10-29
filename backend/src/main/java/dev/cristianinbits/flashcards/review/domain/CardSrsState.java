@@ -17,7 +17,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-
+import jakarta.persistence.Version;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Max;
@@ -42,6 +42,10 @@ import lombok.NoArgsConstructor;
  * intentos, esta clase mantiene un único registro por tarjeta, lo que permite
  * determinar rápidamente qué tarjetas están pendientes de repaso mediante una
  * simple consulta (por ejemplo, {@code WHERE due_at <= NOW()}).
+ *
+ * Además, incorpora un campo de versión para control de concurrencia optimista,
+ * evitando sobrescrituras en escenarios con múltiples actualizaciones
+ * simultáneas.
  */
 @Entity
 @Table(name = "card_srs_state")
@@ -74,6 +78,15 @@ public class CardSrsState {
     private Card card;
 
     /**
+     * Número de versión para control de concurrencia optimista.
+     * Incrementa automáticamente en cada actualización de la entidad, permitiendo
+     * detectar modificaciones simultáneas.
+     */
+    @Version
+    @Column(name = "version", nullable = false)
+    private long version;
+
+    /**
      * Fecha y hora en la que la tarjeta debe volver a revisarse (en formato UTC).
      */
     @Column(name = "due_at", nullable = false)
@@ -101,14 +114,14 @@ public class CardSrsState {
 
     /**
      * Resultado del último intento registrado.
-     * 
+     *
      * 0 indica fallo y 1 indica acierto.
      * Si en el futuro se adopta una escala de 0–5, deberá ajustarse la validación.
      */
     @Column(name = "last_result", nullable = false)
     @Min(0)
     @Max(1)
-    private int lastResult = 0;
+    private short lastResult = 0;
 
     /** Fecha y hora de la última actualización de este estado (en formato UTC). */
     @Column(name = "updated_at", nullable = false)
