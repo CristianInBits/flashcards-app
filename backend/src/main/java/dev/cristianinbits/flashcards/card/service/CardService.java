@@ -6,7 +6,12 @@ import dev.cristianinbits.flashcards.card.dto.CardDto;
 import dev.cristianinbits.flashcards.card.dto.CardUpdateRequest;
 import dev.cristianinbits.flashcards.card.repo.CardRepository;
 import dev.cristianinbits.flashcards.deck.repo.DeckRepository;
+import dev.cristianinbits.flashcards.review.domain.CardSrsState;
+import dev.cristianinbits.flashcards.review.repo.CardSrsStateRepository;
 
+import java.math.BigDecimal;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.NoSuchElementException;
 import java.util.UUID;
 
@@ -21,11 +26,16 @@ import lombok.RequiredArgsConstructor;
 /**
  * Servicio encargado de gestionar la lógica de negocio relacionada con las
  * tarjetas (Cards).
- * 
+ *
  * Coordina las operaciones entre los repositorios de tarjetas y mazos,
  * validando la existencia de los mazos y aplicando reglas de negocio antes de
  * interactuar con la base de datos.
- * 
+ *
+ * Además, al crear una tarjeta inicializa su estado SRS asociado
+ * ({@link CardSrsState}) para que entre inmediatamente en la cola de repaso
+ * (con dueAt = now UTC, intervalDays = 0, easeFactor = 2.50, repetitions = 0,
+ * lastResult = 0).
+ *
  * Anotado con {@code @Service} para su detección por Spring y con
  * {@code @Transactional(readOnly = true)} para indicar que, por defecto, sus
  * métodos no modifican datos salvo los explícitamente anotados con
@@ -42,14 +52,22 @@ public class CardService {
     private final CardRepository cards;
 
     /**
-     * Repositorio encargado de validar y acceder a los mazos asociados a
-     * las tarjetas.
+     * Repositorio encargado de validar y acceder a los mazos asociados a las
+     * tarjetas.
      */
     private final DeckRepository decks;
 
+    /** Repositorio para la persistencia del estado SRS de las tarjetas. */
+    private final CardSrsStateRepository srsRepo;
+
     /**
-     * Crea una nueva tarjeta asociada a un mazo existente.
-     * 
+     * Crea una nueva tarjeta asociada a un mazo existente e inicializa su estado
+     * SRS.
+     *
+     * El estado SRS se crea con valores por defecto para que la tarjeta aparezca
+     * desde el inicio en la cola de revisión (dueAt = now UTC, intervalDays = 0,
+     * easeFactor = 2.50, repetitions = 0, lastResult = 0).
+     *
      * @param req datos de creación de la tarjeta
      * @return DTO con la información de la tarjeta creada
      * @throws NoSuchElementException si el mazo especificado no existe
@@ -65,6 +83,18 @@ public class CardService {
         c.setBack(normalizeOrEmpty(req.back()));
         c.setTags(normalizeOrNull(req.tags()));
         c.setLatex(Boolean.TRUE.equals(req.latex()));
+
+        var srs = new CardSrsState();
+        srs.setCardId(c.getId());
+        srs.setCard(c);
+        var now = OffsetDateTime.now(ZoneOffset.UTC);
+        srs.setDueAt(now);
+        srs.setIntervalDays(0);
+        srs.setEaseFactor(new BigDecimal("2.50"));
+        srs.setRepetitions(0);
+        srs.setLastResult((short) 0);
+        srs.setUpdatedAt(now);
+        srsRepo.save(srs);
 
         c = cards.save(c);
         return toDto(c);
