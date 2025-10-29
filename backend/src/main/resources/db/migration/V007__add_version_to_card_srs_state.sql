@@ -1,0 +1,4 @@
+BEGIN;
+ALTER TABLE card_srs_state
+  ADD COLUMN version BIGINT NOT NULL DEFAULT 0;
+COMMIT;
