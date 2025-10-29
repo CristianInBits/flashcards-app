@@ -109,4 +109,24 @@ public class ApiExceptionHandler {
     return Map.of("error", "bad_request", "message", "JSON mal formado o tipo de dato inválido");
   }
 
+  /**
+   * Maneja las excepciones {@link IllegalStateException} generadas cuando
+   * se intenta realizar una operación que entra en conflicto con el estado
+   * actual del recurso.
+   *
+   * Devuelve una respuesta con el código HTTP 409 (Conflict), incluyendo
+   * detalles del error y el mensaje explicativo.
+   *
+   * @param ex excepción lanzada que describe el conflicto de estado
+   * @return mapa con el código de estado, tipo de error y mensaje asociado
+   */
+  @ExceptionHandler(IllegalStateException.class)
+  @ResponseStatus(HttpStatus.CONFLICT)
+  public Map<String, Object> handleIllegalState(IllegalStateException ex) {
+    return Map.of(
+        "status", HttpStatus.CONFLICT.value(),
+        "error", "Conflict",
+        "message", ex.getMessage());
+  }
+
 }
