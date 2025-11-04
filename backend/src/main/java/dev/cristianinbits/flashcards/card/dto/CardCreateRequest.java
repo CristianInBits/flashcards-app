@@ -16,6 +16,6 @@ public record CardCreateRequest(
         @NotNull UUID deckId,
         @NotBlank @Size(max = 10000) String front,
         @NotBlank @Size(max = 10000) String back,
-        @Size(max = 1000) String tags,
+        @NotBlank @Size(max = 1000) String tags,
         Boolean latex) {
 }

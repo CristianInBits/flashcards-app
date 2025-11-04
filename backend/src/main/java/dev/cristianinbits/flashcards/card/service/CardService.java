@@ -81,7 +81,7 @@ public class CardService {
         c.setDeck(deck);
         c.setFront(normalizeOrEmpty(req.front()));
         c.setBack(normalizeOrEmpty(req.back()));
-        c.setTags(normalizeOrNull(req.tags()));
+        c.setTags(normalizeRequiredTag(req.tags()));
         c.setLatex(Boolean.TRUE.equals(req.latex()));
 
         var srs = new CardSrsState();
@@ -124,7 +124,7 @@ public class CardService {
      *
      * @param deckId   identificador del mazo
      * @param q        texto de búsqueda parcial (puede ser nulo o vacío)
-     * @param tag      etiqueta de filtrado (puede ser nula o vacía)
+     * @param tag      etiqueta de filtrado
      * @param pageable parámetros de paginación y ordenación
      * @return página de tarjetas que cumplen los criterios de búsqueda
      * @throws NoSuchElementException si el mazo no existe
@@ -165,7 +165,7 @@ public class CardService {
         var c = findOr404(id);
         c.setFront(normalizeOrEmpty(req.front()));
         c.setBack(normalizeOrEmpty(req.back()));
-        c.setTags(normalizeOrNull(req.tags()));
+        c.setTags(normalizeRequiredTag(req.tags()));
         if (req.latex() != null) {
             c.setLatex(req.latex());
         }
@@ -246,10 +246,32 @@ public class CardService {
      * @param s texto a normalizar
      * @return cadena normalizada o {@code null} si está vacía
      */
-    private static String normalizeOrNull(String s) {
+    /*
+     * private static String normalizeOrNull(String s) {
+     * if (s == null)
+     * return null;
+     * var t = s.trim();
+     * return t.isEmpty() ? null : t;
+     * }
+     */
+
+    /**
+     * Normaliza una etiqueta (tag) garantizando que siempre tenga un valor válido.
+     *
+     * Si el texto recibido es nulo o está vacío, devuelve la etiqueta por defecto
+     * {@code "general"}. En caso contrario, elimina espacios en blanco y convierte
+     * el texto resultante a minúsculas.
+     *
+     * @param s texto original de la etiqueta (puede ser nulo o vacío)
+     * @return etiqueta normalizada en minúsculas, o {@code "general"} si no se
+     *         proporcionó una válida
+     */
+
+    private static String normalizeRequiredTag(String s) {
+        // fuerza no vacío y en minúsculas
         if (s == null)
-            return null;
+            return "general";
         var t = s.trim();
-        return t.isEmpty() ? null : t;
+        return t.isEmpty() ? "general" : t.toLowerCase();
     }
 }

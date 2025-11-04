@@ -28,9 +28,9 @@ import lombok.ToString;
  * Representa una tarjeta (Card) dentro de un mazo en el sistema de Flashcards.
  * 
  * Cada tarjeta pertenece obligatoriamente a un mazo y contiene un anverso
- * (front), un reverso (back), etiquetas opcionales y metadatos como las fechas
- * de creación y actualización. También puede estar marcada como compatible con
- * LaTeX para permitir renderizado matemático o de fórmulas.
+ * (front), un reverso (back), etiquetas y metadatos como las fechas de creación
+ * y actualización. También puede estar marcada como compatible con LaTeX para
+ * permitir renderizado matemático o de fórmulas.
  * 
  * La relación con {@link Deck} es de muchos a uno (varias tarjetas pueden
  * pertenecer a un mismo mazo). Los eventos de persistencia establecen las
@@ -66,8 +66,8 @@ public class Card {
     @Column(nullable = false)
     private String back;
 
-    /** Etiquetas asociadas a la tarjeta, separadas por comas (opcional). */
-    @Column
+    /** Etiquetas asociadas a la tarjeta, separadas por comas. */
+    @Column(nullable = false)
     private String tags;
 
     /** Indica si la tarjeta contiene contenido en formato LaTeX. */
